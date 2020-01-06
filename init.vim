@@ -201,6 +201,7 @@ let g:ale_linters = {'jsx': ['stylelint', 'eslint'], 'ruby': ['ruby', 'rubocop']
 let g:ale_linter_aliases = {'jsx': 'css'}
 let g:ale_fixers = { '*': ['remove_trailing_lines', 'trim_whitespace'], 'ruby': ['rubocop', 'remove_trailing_lines', 'trim_whitespace'] }
 let g:ale_fix_on_save = 1
+let g:ale_ruby_rubocop_executable = 'bin/rubocop'
 
 let g:prettier#autoformat = 0
 autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql PrettierAsync
