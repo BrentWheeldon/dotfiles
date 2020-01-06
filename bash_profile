@@ -27,10 +27,6 @@ export LSCOLORS=ExFxCxDxBxegedabagacad
 export PS1="\[\e[00;32m\]\h\[\e[0m\]\[\e[00;37m\]:\[\e[0m\]\[\e[01;36m\]\W\[\e[0m\]\[\e[00;37m\] \[\e[0m\]\[\e[00;33m\]\$(parse_git_branch)\[\e[0m\]\[\e[00;37m\]\$ \[\e[0m\]"
 
 alias gitprune="git remote prune origin && git prune"
-alias dails="docker/run spring rails"
-alias dixstructure="git reset db/structure.sql && dails \"db:migrate db:test:prepare\" && git add db/structure.sql && git rebase --continue"
-alias dspec="docker/run spring rspec"
-alias dododo="gpr && docker/run \"bundle && spring stop && spring rails db:migrate db:test:prepare\""
 alias fixit="git add . -A && git commit --amend -CHEAD"
 alias fixstructure="git reset db/structure.sql && sails db:migrate db:test:prepare && git add db/structure.sql && git rebase --continue"
 alias gogogo="gpr && bundle && spring stop && sails db:migrate db:test:prepare"
@@ -41,8 +37,6 @@ alias gut=git
 alias heroky=heroku
 alias ll="ls -alh"
 alias shutupvim="rm /var/tmp/*.swp"
-alias sails="spring rails"
-alias sspec="spring rspec"
 alias wipit="git add . && git commit --no-verify -m wip"
 
 if [ -f ~/.profile ]; then
