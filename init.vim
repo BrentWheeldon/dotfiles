@@ -211,3 +211,9 @@ autocmd VimResized * wincmd =
 if filereadable($HOME . "/.config/nvim/local.vim")
   source ~/.config/nvim/local.vim
 endif
+
+autocmd BufRead,BufNewFile *.md setlocal spell
+autocmd FileType gitcommit setlocal spell
+set complete+=kspell
+
+au BufRead,BufNewFile *.md setlocal textwidth=80
