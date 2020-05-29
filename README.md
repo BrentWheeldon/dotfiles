@@ -6,7 +6,7 @@ sudo scutil --set HostName $MACHINE_NAME
 sudo hostname $MACHINE_NAME
 
 sudo gem install rouge
-brew install git neovim bash-completion ctags ripgrep fzf diff-so-fancy
+brew bundle
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 git clone https://github.com/BrentWheeldon/dotfiles
 ln -sf {`pwd`/dotfiles/,~/.}bash_profile
