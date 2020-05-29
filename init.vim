@@ -7,6 +7,7 @@ call vundle#begin()
 
 Plugin 'gmarik/vundle'
 
+Plugin 'djoshea/vim-autoread' " update changed files
 Plugin 'airblade/vim-gitgutter' " git status in gutter
 Plugin 'altercation/vim-colors-solarized' " theme
 Plugin 'dense-analysis/ale' " linting, etc.
