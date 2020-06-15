@@ -22,6 +22,7 @@ Plugin 'scrooloose/nerdtree' " file explorer
 Plugin 'tpope/vim-abolish' " word variant niceties
 Plugin 'tpope/vim-endwise' " insert 'end's, etc.
 Plugin 'tpope/vim-fugitive' " git niceties
+Plugin 'tpope/vim-projectionist' " related files niceties
 Plugin 'tpope/vim-rails' " rails niceties
 Plugin 'tpope/vim-repeat' " add plugin support for .
 Plugin 'tpope/vim-rhubarb' " github niceties
@@ -131,6 +132,16 @@ set autowriteall                   " Save when doing various buffer-switching th
 autocmd BufLeave,FocusLost * silent! wall
 
 set encoding=utf-8 " Necessary to show unicode glyphs
+
+set confirm " Necessary to create missing files with vim-rails/projectionist
+let g:projectionist_heuristics = { "app/*.rb": {"alternate": "test/{}_test.rb"} }
+
+let g:gitgutter_set_sign_backgrounds = 1
+highlight GitGutterAdd    guifg=#009900 ctermfg=2
+highlight GitGutterChange guifg=#bbbb00 ctermfg=3
+highlight GitGutterDelete guifg=#ff2222 ctermfg=1
+
+set updatetime=100 " update things like gitgutter after 400ms
 
 let ruby_operators=1
 
