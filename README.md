@@ -17,8 +17,6 @@ ln -s {`pwd`/dotfiles/,~/.config/nvim/}init.vim
 ln -s {`pwd`/dotfiles/,~/.}vimrc
 ln -s {`pwd`/dotfiles/,~/.}gemrc
 ln -s {`pwd`/dotfiles/,~/.}psqlrc
-mkdir -p ~/.git_template/hooks
-ln -s `pwd`/git_hooks/* ~/.git_template/hooks/
 nvim +PluginInstall +qall
 ```
 
