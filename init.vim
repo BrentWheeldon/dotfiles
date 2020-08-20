@@ -121,8 +121,8 @@ set smartcase                      " Smart case-sensitivity when searching
 set autoread                       " No prompt for file changes outside Vim
 
 set swapfile                       " Keep swapfiles
-set directory=~/.vim-tmp,~/tmp,/var/tmp,/tmp
-set backupdir=~/.vim-tmp,~/tmp,/var/tmp,/tmp
+set directory=~/.vim-tmp           " Where to put swap files
+set backupdir=~/.vim-tmp/backup    " Where to put backup files
 
 set sessionoptions-=options
 
