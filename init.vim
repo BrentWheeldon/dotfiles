@@ -46,13 +46,13 @@ cabbrev WA wa
 cabbrev Wq wq
 cabbrev WQ wq
 
-map <leader>c   :let @* = fnamemodify(expand("%"), ":~:.")<CR>:echo "Copied: ".fnamemodify(expand("%"), ":~:.")<CR>
-map <leader>C   :let @* = fnamemodify(expand("%"), ":~:.").":".line(".")<CR>:echo "Copied: ".fnamemodify(expand("%"), ":~:.").":".line(".")<CR>
 map <leader>l :!bin/rubocop -a %<CR>
 noremap \           :NERDTreeToggle<CR>
 noremap \|          :NERDTreeFind<CR>
 noremap <leader>/   <plug>NERDCommenterToggle
 noremap <leader>f   :Files<CR>
+noremap <leader>c   :let @* = expand("%")<CR>:echo "Copied: ".@*<CR>
+noremap <leader>C   :let @* = expand("%").":".line(".")<CR>:echo "Copied: ".@*<CR>
 noremap <leader>ev  :vsp $MYVIMRC<cr>
 noremap <leader>sv  :w<cr>:source $MYVIMRC<cr>
 noremap Y           yg_
