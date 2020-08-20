@@ -46,7 +46,6 @@ cabbrev WA wa
 cabbrev Wq wq
 cabbrev WQ wq
 
-map <leader>l :!bin/rubocop -a %<CR>
 noremap \           :NERDTreeToggle<CR>
 noremap \|          :NERDTreeFind<CR>
 noremap <leader>/   <plug>NERDCommenterToggle
@@ -83,6 +82,11 @@ inoremap <Up> <nop>
 inoremap <Down> <nop>
 inoremap <Left> <nop>
 inoremap <Right> <nop>
+
+" stuff to make filetype specific
+noremap <leader>l :!bin/rubocop -a %<CR>
+nnoremap <leader>d :Rg "def <cword>\b"<cr>
+iabbrev fsl # frozen_string_literal: true<cr><BS><BS>
 
 syntax enable
 set background=dark
