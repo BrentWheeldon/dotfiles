@@ -129,7 +129,10 @@ set hls                            " search with highlights by default
 nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>""
 
 set autowriteall                   " Save when doing various buffer-switching things.
-autocmd BufLeave,FocusLost * silent! wall
+augroup writeonblur
+  autocmd!
+  autocmd BufLeave,FocusLost * silent! wall
+augroup END
 
 set encoding=utf-8 " Necessary to show unicode glyphs
 
@@ -163,11 +166,17 @@ let g:ale_fixers = { '*': ['remove_trailing_lines', 'trim_whitespace'], 'ruby': 
 let g:ale_fix_on_save = 1
 let g:ale_ruby_rubocop_executable = 'bin/rubocop'
 
-autocmd BufRead,BufNewFile *.md setlocal spell
-autocmd FileType gitcommit setlocal spell
+augroup spelling
+  autocmd!
+  autocmd BufRead,BufNewFile *.md setlocal spell
+  autocmd FileType gitcommit setlocal spell
+augroup END
 set complete+=kspell
 
-au BufRead,BufNewFile *.md setlocal textwidth=80
+augroup markdown
+  autocmd!
+  autocmd BufRead,BufNewFile *.md setlocal textwidth=80
+augroup END
 
 " Local config
 if filereadable($HOME . "/.config/nvim/local.vim")
