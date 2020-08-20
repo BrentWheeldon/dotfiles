@@ -48,7 +48,6 @@ cabbrev WQ wq
 
 noremap \           :NERDTreeToggle<CR>
 noremap \|          :NERDTreeFind<CR>
-noremap <leader>/   <plug>NERDCommenterToggle
 noremap <leader>f   :Files<CR>
 noremap <leader>c   :let @* = expand("%")<CR>:echo "Copied: ".@*<CR>
 noremap <leader>C   :let @* = expand("%").":".line(".")<CR>:echo "Copied: ".@*<CR>
@@ -58,6 +57,8 @@ noremap Y           yg_
 noremap <C-t>       :tabe<CR>
 nnoremap <leader>w :Rg "\b<cword>\b"<cr>
 noremap <MiddleMouse>  <Nop>
+
+map <leader>/   <plug>NERDCommenterToggle
 
 " Copy to clipboard
 vnoremap  <leader>y  "+y
