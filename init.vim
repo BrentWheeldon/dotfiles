@@ -46,19 +46,18 @@ cabbrev WA wa
 cabbrev Wq wq
 cabbrev WQ wq
 
-map \           :NERDTreeToggle<CR>
-map \|          :NERDTreeFind<CR>
-map <leader>f   :Files<CR>
-map <leader>/   <plug>NERDCommenterToggle
 map <leader>c   :let @* = fnamemodify(expand("%"), ":~:.")<CR>:echo "Copied: ".fnamemodify(expand("%"), ":~:.")<CR>
 map <leader>C   :let @* = fnamemodify(expand("%"), ":~:.").":".line(".")<CR>:echo "Copied: ".fnamemodify(expand("%"), ":~:.").":".line(".")<CR>
-map <leader>ev  :e $MYVIMRC<cr>
-map <leader>sv  :source $MYVIMRC<cr>
 map <leader>l :!bin/rubocop -a %<CR>
-map Y           yg_
-map <MiddleMouse>   <Nop>
-map <MiddleMouse>  <Nop>
-map <C-t>       :tabe<CR>
+noremap \           :NERDTreeToggle<CR>
+noremap \|          :NERDTreeFind<CR>
+noremap <leader>/   <plug>NERDCommenterToggle
+noremap <leader>f   :Files<CR>
+noremap <leader>ev  :vsp $MYVIMRC<cr>
+noremap <leader>sv  :w<cr>:source $MYVIMRC<cr>
+noremap Y           yg_
+noremap <C-t>       :tabe<CR>
+noremap <MiddleMouse>  <Nop>
 
 " Copy to clipboard
 vnoremap  <leader>y  "+y
