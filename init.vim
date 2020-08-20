@@ -124,6 +124,9 @@ set swapfile                       " Keep swapfiles
 set directory=~/.vim-tmp           " Where to put swap files
 set backupdir=~/.vim-tmp/backup    " Where to put backup files
 
+set inccommand=nosplit             " Live updating of substitutions
+
+set updatetime=100                 " update things like gitgutter after this many milliseconds
 
 set hls                            " search with highlights by default
 nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>""
@@ -140,8 +143,6 @@ let g:gitgutter_set_sign_backgrounds = 1
 highlight GitGutterAdd    guifg=#009900 ctermfg=2
 highlight GitGutterChange guifg=#bbbb00 ctermfg=3
 highlight GitGutterDelete guifg=#ff2222 ctermfg=1
-
-set updatetime=100 " update things like gitgutter after 400ms
 
 let ruby_operators=1
 
