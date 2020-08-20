@@ -133,9 +133,6 @@ autocmd BufLeave,FocusLost * silent! wall
 
 set encoding=utf-8 " Necessary to show unicode glyphs
 
-set confirm " Necessary to create missing files with vim-rails/projectionist
-let g:projectionist_heuristics = { "app/*.rb": {"alternate": "test/{}_test.rb"} }
-
 let g:gitgutter_set_sign_backgrounds = 1
 highlight GitGutterAdd    guifg=#009900 ctermfg=2
 highlight GitGutterChange guifg=#bbbb00 ctermfg=3
