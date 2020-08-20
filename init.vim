@@ -123,7 +123,6 @@ set swapfile                       " Keep swapfiles
 set directory=~/.vim-tmp           " Where to put swap files
 set backupdir=~/.vim-tmp/backup    " Where to put backup files
 
-set sessionoptions-=options
 
 set hls                            " search with highlights by default
 nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>""
@@ -153,13 +152,6 @@ let g:ale_sign_warning = '✘'
 highlight ALEWarningSign ctermfg=Red
 
 let g:rg_command = 'rg --vimgrep --sort-files'
-
-" NeoTerm
-let g:neoterm_autoinsert = 0
-let g:neoterm_autoscroll = 0
-let g:neoterm_size = 20
-let g:neoterm_fixedsize = 1
-let g:neoterm_open_in_all_tabs = 1
 
 let g:ale_linters = {'ruby': ['ruby', 'rubocop']}
 let g:ale_fixers = { '*': ['remove_trailing_lines', 'trim_whitespace'], 'ruby': ['rubocop', 'remove_trailing_lines', 'trim_whitespace'] }
