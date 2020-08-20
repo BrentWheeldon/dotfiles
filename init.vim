@@ -57,6 +57,7 @@ noremap <leader>ev  :vsp $MYVIMRC<cr>
 noremap <leader>sv  :w<cr>:source $MYVIMRC<cr>
 noremap Y           yg_
 noremap <C-t>       :tabe<CR>
+nnoremap <leader>w :Rg "\b<cword>\b"<cr>
 noremap <MiddleMouse>  <Nop>
 
 " Copy to clipboard
