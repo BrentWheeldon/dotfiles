@@ -36,7 +36,8 @@ Plugin 'vim-scripts/regreplop.vim' " paste niceties
 
 call vundle#end()
 
-let mapleader = ","
+let mapleader = ','
+let maplocalleader = '-'
 
 cabbrev W w
 cabbrev Q q
