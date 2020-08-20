@@ -12,6 +12,7 @@ ln -sf {`pwd`/dotfiles/,~/.}bash_profile
 ln -s {`pwd`/dotfiles/,~/.}gitconfig
 ln -s {`pwd`/dotfiles/,~/.}inputrc
 mkdir -p ~/.config/nvim
+mkdir -p ~/.vim-tmp/backup
 ln -s {`pwd`/dotfiles/,~/.config/nvim/}init.vim
 ln -s {`pwd`/dotfiles/,~/.}vimrc
 ln -s {`pwd`/dotfiles/,~/.}gemrc
