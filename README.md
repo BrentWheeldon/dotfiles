@@ -5,7 +5,6 @@ sudo scutil --set LocalHostName $MACHINE_NAME
 sudo scutil --set HostName $MACHINE_NAME
 sudo hostname $MACHINE_NAME
 
-sudo gem install rouge
 brew bundle
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 git clone https://github.com/BrentWheeldon/dotfiles
