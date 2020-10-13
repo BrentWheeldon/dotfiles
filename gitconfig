@@ -3,7 +3,7 @@
   co = checkout
   delete-branch = !sh -c 'git push origin :refs/heads/$1 && git remote prune origin && git branch -D $1' -
   st = status
-  up = !git fetch origin && git rebase origin/master
+  up = !git fetch origin && git rebase origin/HEAD
   tree = log --graph --full-history --all --color --date=short --pretty=format:\"%Cred%x09%h %Creset%ad%Cblue%d %Creset %s %C(bold)(%an)%Creset\"
   ctags = !.git/hooks/ctags
 [fetch]
