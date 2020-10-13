@@ -83,6 +83,10 @@ inoremap <Up> <nop>
 inoremap <Down> <nop>
 inoremap <Left> <nop>
 inoremap <Right> <nop>
+vnoremap <Up> <nop>
+vnoremap <Down> <nop>
+vnoremap <Left> <nop>
+vnoremap <Right> <nop>
 
 " stuff to make filetype specific
 noremap <leader>l :!bin/rubocop -a %<CR>
@@ -144,6 +148,8 @@ set backupdir=~/.vim-tmp/backup    " Where to put backup files
 set inccommand=nosplit             " Live updating of substitutions
 
 set updatetime=100                 " update things like gitgutter after this many milliseconds
+
+set number relativenumber          " show relative line numbers to encourage better vim use (rather than leaning on an arrow key for a minute)
 
 set hls                            " search with highlights by default
 nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>""
