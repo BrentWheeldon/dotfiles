@@ -195,6 +195,8 @@ augroup markdown
   autocmd BufRead,BufNewFile *.md setlocal textwidth=80
 augroup END
 
+let g:rg_command = 'rg --vimgrep --hidden --sort path --iglob !.git/'
+
 " Local config
 if filereadable($HOME . "/.config/nvim/local.vim")
   source ~/.config/nvim/local.vim
