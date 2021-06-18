@@ -1,3 +1,9 @@
+if [ "$(uname)" == "Darwin" ]; then
+  MAC="1"
+elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
+  LINUX="1"
+fi
+
 parse_git_branch() {
  git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1) /'
 }
@@ -7,7 +13,7 @@ loopy() {
   for i in {1..10}; do $1; done
 }
 
-if [ -f $(brew --prefix)/etc/bash_completion ]; then
+if [ -n "${MAC}" ] && [ -f $(brew --prefix)/etc/bash_completion ]; then
   . $(brew --prefix)/etc/bash_completion
 fi
 
@@ -24,6 +30,7 @@ export HISTFILESIZE=50000
 export HISTSIZE=50000
 export HISTTIMEFORMAT="%h %d %H:%M:%S "
 export LSCOLORS=ExFxCxDxBxegedabagacad
+export PATH="$PATH:$HOME/node_modules/.bin:$HOME/bin"
 export PS1="\[\e[00;32m\]\h\[\e[0m\]\[\e[00;37m\]:\[\e[0m\]\[\e[01;36m\]\W\[\e[0m\]\[\e[00;37m\] \[\e[0m\]\[\e[00;33m\]\$(parse_git_branch)\[\e[0m\]\[\e[00;37m\]\$ \[\e[0m\]"
 
 alias gitprune="git remote prune origin && git prune"
@@ -46,6 +53,3 @@ fi
 if [ -f ~/.bash_profile.local ]; then
   . ~/.bash_profile.local
 fi
-
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
-export GPG_TTY=$(tty)
