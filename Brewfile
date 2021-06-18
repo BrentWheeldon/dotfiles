@@ -1,7 +1,6 @@
 brew "git"
 brew "neovim"
 brew "bash-completion"
-brew "ctags"
 brew "ripgrep"
 brew "fzf"
 brew "diff-so-fancy"
