@@ -21,6 +21,7 @@ fi
 sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 
+ln -sf {`pwd`/,$HOME/.}bashrc
 ln -sf {`pwd`/,$HOME/.}bash_profile
 ln -sf {`pwd`/,$HOME/.}gitconfig
 ln -sf {`pwd`/,$HOME/.}inputrc
@@ -35,3 +36,4 @@ nvim -u plugins.vim --headless -c "PlugInstall | qa"
 
 touch $HOME/.gitconfig.local
 touch $HOME/.bash_profile.local
+touch $HOME/.bashrc.local
