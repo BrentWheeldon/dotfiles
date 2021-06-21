@@ -35,4 +35,3 @@ nvim -u plugins.vim --headless -c "PlugInstall | qa"
 
 touch $HOME/.gitconfig.local
 touch $HOME/.bash_profile.local
-touch $HOME/
