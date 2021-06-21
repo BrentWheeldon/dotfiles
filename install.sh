@@ -6,17 +6,17 @@ set -x
 
 if [ "$(uname)" == "Darwin" ]; then
   brew bundle
+  cd /usr/local/share/git-core/contrib/diff-highlight/
+  make
+  mv diff-highlight /usr/local/bin/
+  cd -
 elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
   apt-get update && apt-get install -y git neovim bash-completion ripgrep fzf curl
+  cd /usr/share/doc/git/contrib/diff-highlight
+  make
+  mv diff-highlight /usr/bin/
+  cd -
 fi
-
-mkdir -p $HOME/bin
-
-git clone https://github.com/git/git.git --single-branch $HOME/git
-cd $HOME/git/contrib/diff-highlight
-make
-mv diff-highlight $HOME/bin/
-cd -
 
 sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
