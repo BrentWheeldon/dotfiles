@@ -49,3 +49,5 @@ alias wipit="git add . && git commit --no-verify -m wip"
 if [ -f ~/.bashrc.local ]; then
   . ~/.bashrc.local
 fi
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash

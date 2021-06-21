@@ -4,19 +4,26 @@ exec > >(tee -i $HOME/dotfiles_install.log)
 exec 2>&1
 set -x
 
+
 if [ "$(uname)" == "Darwin" ]; then
   brew bundle
-  cd /usr/local/share/git-core/contrib/diff-highlight/
-  make
-  mv diff-highlight /usr/local/bin/
-  cd -
+  DIFF_HIGHLIGHT_PATH=/usr/local/share/git-core/contrib/diff-highlight/
+  BIN_PATH=/usr/local/bin/
 elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
-  apt-get update && apt-get install -y git neovim bash-completion ripgrep fzf curl
-  cd /usr/share/doc/git/contrib/diff-highlight
-  make
-  mv diff-highlight /usr/bin/
-  cd -
+  apt-get update && apt-get install -y git neovim bash-completion ripgrep curl
+  DIFF_HIGHLIGHT_PATH=/usr/share/doc/git/contrib/diff-highlight/
+  BIN_PATH=/usr/bin/
 fi
+
+cd $DIFF_HIGHLIGHT_PATH
+make
+mv diff-highlight $BIN_PATH
+cd -
+
+rm -rf $HOME/.fzf
+git clone --depth 1 https://github.com/junegunn/fzf.git $HOME/.fzf
+$HOME/.fzf/install --all
+mv $HOME/.fzf/bin/fzf $BIN_PATH
 
 sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
