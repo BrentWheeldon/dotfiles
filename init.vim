@@ -54,6 +54,9 @@ vnoremap <Down> <nop>
 vnoremap <Left> <nop>
 vnoremap <Right> <nop>
 
+" No, I _never_ want to use ed mode
+nnoremap Q <nop>
+
 " stuff to make filetype specific
 noremap <leader>l :!bin/rubocop -a %<CR>
 nnoremap <leader>d :Rg "def <cword>\b"<cr>
