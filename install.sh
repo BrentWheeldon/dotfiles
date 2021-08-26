@@ -7,6 +7,7 @@ set -x
 
 if [ "$(uname)" == "Darwin" ]; then
   brew bundle
+  brew services start clipper
   DIFF_HIGHLIGHT_PATH=/usr/local/share/git-core/contrib/diff-highlight/
   BIN_PATH=/usr/local/bin/
 elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
