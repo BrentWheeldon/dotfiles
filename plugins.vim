@@ -28,5 +28,6 @@ Plug 'vim-ruby/vim-ruby' " ruby niceties
 Plug 'vim-scripts/gitignore' " ignore things in gitignore
 Plug 'vim-scripts/nextval' " increment niceties
 Plug 'vim-scripts/regreplop.vim' " paste niceties
+Plug 'wincent/vim-clipper' " clipper integration
 
 call plug#end()
