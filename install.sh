@@ -10,7 +10,7 @@ if [ "$(uname)" == "Darwin" ]; then
   DIFF_HIGHLIGHT_PATH=/usr/local/share/git-core/contrib/diff-highlight/
   BIN_PATH=/usr/local/bin/
 elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
-  apt-get update && apt-get install -y git neovim bash-completion ripgrep curl xauth
+  apt-get update && apt-get install -y git neovim bash-completion ripgrep curl
   DIFF_HIGHLIGHT_PATH=/usr/share/doc/git/contrib/diff-highlight/
   BIN_PATH=/usr/bin/
 fi
