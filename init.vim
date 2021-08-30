@@ -29,15 +29,6 @@ noremap <MiddleMouse>  <Nop>
 
 map <leader>/   <plug>NERDCommenterToggle
 
-let g:clipboard = {
-      \   'name': 'clipper',
-      \   'copy': {
-      \      '+': 'nc localhost 8377 -q 0',
-      \      '*': 'nc localhost 8377 -q 0',
-      \    },
-      \   'cache_enabled': 1,
-      \ }
-
 " Copy to clipboard
 vnoremap  <leader>y  "+y
 nnoremap  <leader>Y  "+yg_
