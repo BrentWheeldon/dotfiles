@@ -17,8 +17,8 @@ cabbrev WQ wq
 noremap \           :NERDTreeToggle<CR>
 noremap \|          :NERDTreeFind<CR>
 noremap <leader>f   :Files<CR>
-noremap <leader>j   :let @* = expand("%")<CR>:echo "Copied: ".@*<CR>
-noremap <leader>J   :let @* = expand("%").":".line(".")<CR>:echo "Copied: ".@*<CR>
+noremap <leader>j   :call OSCYankString(expand("%"))<CR>
+noremap <leader>J   :call OSCYankString(expand("%").":".line("."))<CR>
 noremap <leader>ev  :vsp $MYVIMRC<cr>
 noremap <leader>sv  :w<cr>:source $MYVIMRC<cr>
 noremap Y           yg_
