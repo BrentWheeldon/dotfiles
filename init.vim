@@ -2,9 +2,6 @@ set nocompatible
 
 source ~/.config/nvim/plugins.vim
 
-call clipper#set_invocation('nc localhost 8377 -q 0')
-let g:ClipperMap=0
-
 let mapleader = ','
 let maplocalleader = '-'
 
