@@ -2,6 +2,8 @@ set nocompatible
 
 source ~/.config/nvim/plugins.vim
 
+autocmd TextYankPost * if v:event.operator is 'y' && v:event.regname is '+' | OSCYankReg " | endif
+
 let mapleader = ','
 let maplocalleader = '-'
 

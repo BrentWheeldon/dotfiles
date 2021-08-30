@@ -12,6 +12,7 @@ Plug 'junegunn/fzf' " fuzzy finding
 Plug 'junegunn/fzf.vim' " fuzzy finding
 Plug 'machakann/vim-highlightedyank' " highlight yanked text
 Plug 'mkitt/tabline.vim' " nice tabs
+Plug 'ojroques/vim-oscyank' " SSH copy-paste
 Plug 'scrooloose/nerdcommenter' " comment niceties
 Plug 'scrooloose/nerdtree' " file explorer
 Plug 'tpope/vim-abolish' " word variant niceties
