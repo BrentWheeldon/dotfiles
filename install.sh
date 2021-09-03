@@ -6,13 +6,26 @@ set -x
 
 
 if [ "$(uname)" == "Darwin" ]; then
-  brew bundle
   DIFF_HIGHLIGHT_PATH=/usr/local/share/git-core/contrib/diff-highlight/
   BIN_PATH=/usr/local/bin/
+
+  brew bundle
 elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
-  apt-get update && apt-get install -y git neovim bash-completion ripgrep curl
   DIFF_HIGHLIGHT_PATH=/usr/share/doc/git/contrib/diff-highlight/
   BIN_PATH=/usr/bin/
+
+  apt-get update && apt-get install -y git bash-completion ripgrep curl
+
+  cd /tmp
+
+  curl -L -o lazygit.tar.gz https://github.com/jesseduffield/lazygit/releases/download/v0.29/lazygit_0.29_Linux_x86_64.tar.gz
+  tar -xzf lazygit.tar.gz
+  mv lazygit $BIN_PATH
+  curl -L -o neovim.tar.gz https://github.com/neovim/neovim/releases/download/v0.5.0/nvim-linux64.tar.gz
+  tar -xzf neovim.tar.gz
+  mv nvim-linux64/bin/nvim $BIN_PATH
+
+  cd -
 fi
 
 cd $DIFF_HIGHLIGHT_PATH
