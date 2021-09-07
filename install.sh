@@ -16,14 +16,16 @@ elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
 
   apt-get update && apt-get install -y git bash-completion ripgrep curl
 
-  cd /tmp
+  BINARY_DOWNLOADS_PATH=~/binary-downloads
+  mkdir -p $BINARY_DOWNLOADS_PATH
+  cd $BINARY_DOWNLOADS_PATH
 
   curl -L -o lazygit.tar.gz https://github.com/jesseduffield/lazygit/releases/download/v0.29/lazygit_0.29_Linux_x86_64.tar.gz
   tar -xzf lazygit.tar.gz
-  mv lazygit $BIN_PATH
+  ln -s lazygit $BIN_PATH
   curl -L -o neovim.tar.gz https://github.com/neovim/neovim/releases/download/v0.5.0/nvim-linux64.tar.gz
   tar -xzf neovim.tar.gz
-  mv nvim-linux64/bin/nvim $BIN_PATH
+  ln -sf nvim-linux64/bin/nvim $BIN_PATH
 
   cd -
 fi
