@@ -22,10 +22,10 @@ elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
 
   curl -L -o lazygit.tar.gz https://github.com/jesseduffield/lazygit/releases/download/v0.29/lazygit_0.29_Linux_x86_64.tar.gz
   tar -xzf lazygit.tar.gz
-  ln -s lazygit $BIN_PATH
+  ln -sf $(pwd)/lazygit $BIN_PATH
   curl -L -o neovim.tar.gz https://github.com/neovim/neovim/releases/download/v0.5.0/nvim-linux64.tar.gz
   tar -xzf neovim.tar.gz
-  ln -sf nvim-linux64/bin/nvim $BIN_PATH
+  ln -sf $(pwd)/nvim-linux64/bin/nvim $BIN_PATH
 
   cd -
 fi
