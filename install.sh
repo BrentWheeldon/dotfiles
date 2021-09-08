@@ -4,13 +4,18 @@ exec > >(tee -i $HOME/dotfiles_install.log)
 exec 2>&1
 set -x
 
-
 if [ "$(uname)" == "Darwin" ]; then
+  export MAC=1
+elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
+  export LINUX=1
+fi
+
+if [ -n "${MAC}" ]; then
   DIFF_HIGHLIGHT_PATH=/usr/local/share/git-core/contrib/diff-highlight/
   BIN_PATH=/usr/local/bin/
 
   brew bundle
-elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
+elif [ -n "${LINUX}" ]; then
   DIFF_HIGHLIGHT_PATH=/usr/share/doc/git/contrib/diff-highlight/
   BIN_PATH=/usr/bin/
 
@@ -45,6 +50,9 @@ sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.
 ln -sf {`pwd`/,$HOME/.}bashrc
 ln -sf {`pwd`/,$HOME/.}bash_profile
 ln -sf {`pwd`/,$HOME/.}gitconfig
+if [ -n "${MAC}" ]; then
+  git config --global credential.helper osxkeychain
+fi
 ln -sf {`pwd`/,$HOME/.}inputrc
 mkdir -p $HOME/.config/nvim
 mkdir -p $HOME/.vim-tmp/backup
