@@ -1,5 +1,3 @@
-export PATH="$PATH:$HOME/node_modules/.bin:$HOME/bin"
-
 if [ -f ~/.profile ]; then
   . ~/.profile
 fi
