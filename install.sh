@@ -32,7 +32,7 @@ fi
 
 cd $DIFF_HIGHLIGHT_PATH
 make
-mv diff-highlight $BIN_PATH
+cp -f diff-highlight $BIN_PATH
 cd -
 
 rm -rf $HOME/.fzf
