@@ -61,6 +61,8 @@ ln -sf {`pwd`/,$HOME/.config/nvim/}plugins.vim
 ln -sf {`pwd`/,$HOME/.}vimrc
 ln -sf {`pwd`/,$HOME/.}gemrc
 ln -sf {`pwd`/,$HOME/.}psqlrc
+ln -sf {`pwd`/,$HOME/.}tmux.conf
+
 nvim -u plugins.vim --headless -c "PlugInstall | qa"
 
 touch $HOME/.gitconfig.local

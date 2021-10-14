@@ -13,6 +13,14 @@ loopy() {
   for i in {1..10}; do $1; done
 }
 
+newtmux() {
+  tmux new-session -d -s bmw
+  tmux new-window -n shell
+  tmux new-window -d -n vim
+  tmux new-window -d -n lazygit
+  tmux attach-session -d -t bmw
+}
+
 if [ -n "${MAC}" ] && [ -f $(brew --prefix)/etc/bash_completion ]; then
   . $(brew --prefix)/etc/bash_completion
 fi
