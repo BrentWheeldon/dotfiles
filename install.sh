@@ -19,7 +19,7 @@ elif [ -n "${LINUX}" ]; then
   DIFF_HIGHLIGHT_PATH=/usr/share/doc/git/contrib/diff-highlight/
   BIN_PATH=/usr/bin/
 
-  apt-get update && apt-get install -y git bash-completion ripgrep curl
+  apt-get update && apt-get install -y git bash-completion ripgrep curl tmux
 
   BINARY_DOWNLOADS_PATH=~/binary-downloads
   mkdir -p $BINARY_DOWNLOADS_PATH

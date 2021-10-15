@@ -15,9 +15,8 @@ loopy() {
 
 newtmux() {
   tmux new-session -d -s bmw
-  tmux new-window -n shell
-  tmux new-window -d -n vim
-  tmux new-window -d -n lazygit
+  tmux new-window -d -n vim nvim
+  tmux new-window -d -n lazygit lazygit
   tmux attach-session -d -t bmw
 }
 
