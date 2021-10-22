@@ -13,7 +13,7 @@
 [log]
   date = short
 [push]
-  default = simple
+  default = current
 [include]
   path = ~/.gitconfig.local
 [core]
