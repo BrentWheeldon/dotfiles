@@ -63,6 +63,7 @@ nnoremap Q <nop>
 noremap <leader>l :!bin/rubocop -a %<CR>
 nnoremap <leader>d :Rg "def <cword>\b"<cr>
 iabbrev fsl # frozen_string_literal: true<cr><BS><BS>
+iabbrev pryy require "pry"; binding.pry
 
 syntax enable
 set background=dark
