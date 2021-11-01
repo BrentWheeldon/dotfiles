@@ -47,14 +47,18 @@ nnoremap <Up> <nop>
 nnoremap <Down> <nop>
 nnoremap <Left> <nop>
 nnoremap <Right> <nop>
-inoremap <Up> <nop>
-inoremap <Down> <nop>
+inoremap <expr> <Up> pumvisible() ? "\<Up>" : ""
+inoremap <expr> <Down> pumvisible() ? "\<Down>" : ""
 inoremap <Left> <nop>
 inoremap <Right> <nop>
 vnoremap <Up> <nop>
 vnoremap <Down> <nop>
 vnoremap <Left> <nop>
 vnoremap <Right> <nop>
+
+" use C-j/k to go up/down in popup menu
+inoremap <expr> <C-J> pumvisible() ? "\<C-N>" : "j"
+inoremap <expr> <C-K> pumvisible() ? "\<C-P>" : "k"
 
 " No, I _never_ want to use ed mode
 nnoremap Q <nop>
