@@ -32,6 +32,8 @@ nnoremap <C-l> <nop>
 inoremap <C-l> <nop>
 vnoremap <C-l> <nop>
 
+cnoremap <C-A> <Home>
+
 " Copy to clipboard
 vnoremap  <leader>y  "+y
 nnoremap  <leader>Y  "+yg_
