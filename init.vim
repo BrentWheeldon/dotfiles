@@ -28,6 +28,10 @@ noremap <MiddleMouse>  <Nop>
 
 map <leader>/   <plug>NERDCommenterToggle
 
+nnoremap <C-l> <nop>
+inoremap <C-l> <nop>
+vnoremap <C-l> <nop>
+
 " Copy to clipboard
 vnoremap  <leader>y  "+y
 nnoremap  <leader>Y  "+yg_
