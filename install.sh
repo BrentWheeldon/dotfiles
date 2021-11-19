@@ -19,7 +19,7 @@ elif [ -n "${LINUX}" ]; then
   DIFF_HIGHLIGHT_PATH=/usr/share/doc/git/contrib/diff-highlight/
   BIN_PATH=/usr/bin/
 
-  apt-get update && apt-get install -y git bash-completion ripgrep curl tmux
+  sudo apt-get update && sudo apt-get install -y git bash-completion ripgrep curl tmux
 
   BINARY_DOWNLOADS_PATH=~/binary-downloads
   mkdir -p $BINARY_DOWNLOADS_PATH
@@ -27,17 +27,17 @@ elif [ -n "${LINUX}" ]; then
 
   curl -L -o lazygit.tar.gz https://github.com/jesseduffield/lazygit/releases/download/v0.29/lazygit_0.29_Linux_x86_64.tar.gz
   tar -xzf lazygit.tar.gz
-  ln -sf $(pwd)/lazygit $BIN_PATH
+  sudo ln -sf $(pwd)/lazygit $BIN_PATH
   curl -L -o neovim.tar.gz https://github.com/neovim/neovim/releases/download/v0.5.0/nvim-linux64.tar.gz
   tar -xzf neovim.tar.gz
-  ln -sf $(pwd)/nvim-linux64/bin/nvim $BIN_PATH
+  sudo ln -sf $(pwd)/nvim-linux64/bin/nvim $BIN_PATH
 
   cd -
 fi
 
 cd $DIFF_HIGHLIGHT_PATH
 make
-cp -f diff-highlight $BIN_PATH
+sudo cp -f diff-highlight $BIN_PATH
 cd -
 
 rm -rf $HOME/.fzf
