@@ -14,7 +14,7 @@ loopy() {
 }
 
 newtmux() {
-  session_name="${1:-$(basename `pwd`)}"
+  session_name="${1:-$(sed 's/\./-/g' <<<"$(basename `pwd`)")}"
   tmux new-session -d -s "$session_name"
   tmux new-window -d -n vim nvim
   tmux new-window -d -n lazygit lazygit
