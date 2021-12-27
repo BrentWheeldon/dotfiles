@@ -2,6 +2,7 @@
 
 exec > >(tee -i $HOME/dotfiles_install.log)
 exec 2>&1
+set -e
 set -x
 
 if [ "$(uname)" == "Darwin" ]; then
@@ -13,11 +14,13 @@ fi
 if [ -n "${MAC}" ]; then
   DIFF_HIGHLIGHT_PATH=/usr/local/share/git-core/contrib/diff-highlight/
   BIN_PATH=/usr/local/bin/
+  LAZYGIT_CONFIG_DIR=$HOME/Library/Application\ Support/lazygit/
 
   brew bundle
 elif [ -n "${LINUX}" ]; then
   DIFF_HIGHLIGHT_PATH=/usr/share/doc/git/contrib/diff-highlight/
   BIN_PATH=/usr/bin/
+  LAZYGIT_CONFIG_DIR=$HOME/.config/lazygit/
 
   sudo apt-get update && sudo apt-get install -y git bash-completion ripgrep curl tmux
 
@@ -60,6 +63,8 @@ ln -sf {`pwd`/,$HOME/.}vimrc
 ln -sf {`pwd`/,$HOME/.}gemrc
 ln -sf {`pwd`/,$HOME/.}psqlrc
 ln -sf {`pwd`/,$HOME/.}tmux.conf
+mkdir -p $LAZYGIT_CONFIG_DIR
+ln -sf {`pwd`/lazygit_,"$LAZYGIT_CONFIG_DIR"}config.yml
 
 nvim -u plugins.vim --headless -c "PlugInstall | qa"
 
