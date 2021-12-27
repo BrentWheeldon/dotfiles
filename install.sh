@@ -38,6 +38,7 @@ fi
 cd $DIFF_HIGHLIGHT_PATH
 make
 sudo cp -f diff-highlight $BIN_PATH
+sudo chmod +x $BIN_PATH/diff-highlight
 cd -
 
 rm -rf $HOME/.fzf
