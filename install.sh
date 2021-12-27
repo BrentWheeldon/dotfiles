@@ -45,9 +45,6 @@ rm -rf $HOME/.fzf
 git clone --depth 1 https://github.com/junegunn/fzf.git $HOME/.fzf
 $HOME/.fzf/install --all
 
-rm -rf $HOME/.tmux/plugins/tpm
-git clone https://github.com/tmux-plugins/tpm $HOME/.tmux/plugins/tpm
-
 sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 
