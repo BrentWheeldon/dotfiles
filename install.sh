@@ -53,9 +53,6 @@ sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.
 ln -sf {`pwd`/,$HOME/.}bashrc
 ln -sf {`pwd`/,$HOME/.}bash_profile
 ln -sf {`pwd`/,$HOME/.}gitconfig
-if [ -n "${MAC}" ]; then
-  git config --global credential.helper osxkeychain
-fi
 ln -sf {`pwd`/,$HOME/.}inputrc
 mkdir -p $HOME/.config/nvim
 mkdir -p $HOME/.vim-tmp/backup
@@ -71,3 +68,7 @@ nvim -u plugins.vim --headless -c "PlugInstall | qa"
 touch $HOME/.gitconfig.local
 touch $HOME/.bash_profile.local
 touch $HOME/.bashrc.local
+
+if [ -n "${MAC}" ]; then
+  grep -q "helper = osxkeychain" ~/.gitconfig.local || echo -e "[credential]\n  helper = osxkeychain" >> ~/.gitconfig.local
+fi
