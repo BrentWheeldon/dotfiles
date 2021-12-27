@@ -51,7 +51,7 @@ alias gtx=gitx
 alias gut=git
 alias heroky=heroku
 alias ll="ls -alh"
-alias moarcommits="git fetch --unshallow || true"
+alias moarcommits="git fetch --unshallow 2> /dev/null || true"
 alias shutupvim="rm /var/tmp/*.swp"
 alias wipit="git add . && git commit --no-verify -m wip"
 
