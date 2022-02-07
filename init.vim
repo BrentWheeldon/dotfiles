@@ -179,6 +179,9 @@ augroup END
 
 let g:rg_command = 'rg --vimgrep --hidden --sort path --iglob !.git/'
 
+" include custom directories so protoc doesn't fail
+let g:ale_proto_protoc_gen_lint_options='-I . -I proto'
+
 " Local config
 if filereadable($HOME . "/.config/nvim/local.vim")
   source ~/.config/nvim/local.vim
