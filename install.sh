@@ -63,6 +63,7 @@ ln -sf {`pwd`/,$HOME/.}vimrc
 ln -sf {`pwd`/,$HOME/.}gemrc
 ln -sf {`pwd`/,$HOME/.}psqlrc
 ln -sf {`pwd`/,$HOME/.}tmux.conf
+ln -sf {`pwd`/,$HOME/.}tmux-overmind.conf
 mkdir -p $LAZYGIT_CONFIG_DIR
 ln -sf {`pwd`/lazygit_,"$LAZYGIT_CONFIG_DIR"}config.yml
 

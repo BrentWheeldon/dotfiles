@@ -38,6 +38,7 @@ export HISTFILESIZE=50000
 export HISTSIZE=50000
 export HISTTIMEFORMAT="%h %d %H:%M:%S "
 export LSCOLORS=ExFxCxDxBxegedabagacad
+export OVERMIND_TMUX_CONFIG="$HOME/.tmux-overmind.conf"
 export PATH="$PATH:$HOME/node_modules/.bin:$HOME/bin"
 export PS1="\[\e[00;32m\]\h\[\e[0m\]\[\e[00;37m\]:\[\e[0m\]\[\e[01;36m\]\W\[\e[0m\]\[\e[00;37m\] \[\e[0m\]\[\e[00;33m\]\$(parse_git_branch)\[\e[0m\]\[\e[00;37m\]\$ \[\e[0m\]"
 
