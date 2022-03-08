@@ -51,23 +51,25 @@ $HOME/.fzf/install --all
 sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 
-ln -sf {`pwd`/,$HOME/.}bashrc
-ln -sf {`pwd`/,$HOME/.}bash_profile
-ln -sf {`pwd`/,$HOME/.}gitconfig
-ln -sf {`pwd`/,$HOME/.}inputrc
+BASE_DIRECTORY=$(dirname "${BASH_SOURCE[0]}")
+
+ln -sf {$BASE_DIRECTORY/,$HOME/.}bashrc
+ln -sf {$BASE_DIRECTORY/,$HOME/.}bash_profile
+ln -sf {$BASE_DIRECTORY/,$HOME/.}gitconfig
+ln -sf {$BASE_DIRECTORY/,$HOME/.}inputrc
 mkdir -p $HOME/.config/nvim
 mkdir -p $HOME/.vim-tmp/backup
-ln -sf {`pwd`/,$HOME/.config/nvim/}init.vim
-ln -sf {`pwd`/,$HOME/.config/nvim/}plugins.vim
-ln -sf {`pwd`/,$HOME/.}vimrc
-ln -sf {`pwd`/,$HOME/.}gemrc
-ln -sf {`pwd`/,$HOME/.}psqlrc
-ln -sf {`pwd`/,$HOME/.}tmux.conf
-ln -sf {`pwd`/,$HOME/.}tmux-overmind.conf
+ln -sf {$BASE_DIRECTORY/,$HOME/.config/nvim/}init.vim
+ln -sf {$BASE_DIRECTORY/,$HOME/.config/nvim/}plugins.vim
+ln -sf {$BASE_DIRECTORY/,$HOME/.}vimrc
+ln -sf {$BASE_DIRECTORY/,$HOME/.}gemrc
+ln -sf {$BASE_DIRECTORY/,$HOME/.}psqlrc
+ln -sf {$BASE_DIRECTORY/,$HOME/.}tmux.conf
+ln -sf {$BASE_DIRECTORY/,$HOME/.}tmux-overmind.conf
 mkdir -p $LAZYGIT_CONFIG_DIR
-ln -sf {`pwd`/lazygit_,"$LAZYGIT_CONFIG_DIR"}config.yml
+ln -sf {$BASE_DIRECTORY/lazygit_,"$LAZYGIT_CONFIG_DIR"}config.yml
 
-nvim -u plugins.vim --headless -c "PlugInstall | qa"
+nvim -u $HOME/.config/nvim/plugins.vim --headless -c "PlugInstall | qa"
 
 touch $HOME/.gitconfig.local
 touch $HOME/.bash_profile.local
