@@ -51,7 +51,7 @@ $HOME/.fzf/install --all
 sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 
-BASE_DIRECTORY=$(dirname "${BASH_SOURCE[0]}")
+BASE_DIRECTORY=$(readlink -f $(dirname "${BASH_SOURCE[0]}"))
 
 ln -sf {$BASE_DIRECTORY/,$HOME/.}bashrc
 ln -sf {$BASE_DIRECTORY/,$HOME/.}bash_profile
