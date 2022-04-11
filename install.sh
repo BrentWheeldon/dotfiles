@@ -12,6 +12,8 @@ elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
 fi
 
 if [ -n "${MAC}" ]; then
+  (brew info > /dev/null) || (/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)")
+
   DIFF_HIGHLIGHT_PATH=/usr/local/share/git-core/contrib/diff-highlight/
   BIN_PATH=/usr/local/bin/
   LAZYGIT_CONFIG_DIR=$HOME/Library/Application\ Support/lazygit/
