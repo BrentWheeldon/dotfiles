@@ -38,6 +38,8 @@
 	<false/>
 	<key>DisableFullscreenTransparency</key>
 	<false/>
+	<key>DisablePasswordManagerAnimations</key>
+	<true/>
 	<key>EnableRendezvous</key>
 	<false/>
 	<key>FocusFollowsMouse</key>
@@ -661,6 +663,8 @@
 			<true/>
 			<key>Normal Font</key>
 			<string>Menlo-Regular 16</string>
+			<key>Open Password Manager Automatically</key>
+			<false/>
 			<key>Option Key Sends</key>
 			<integer>2</integer>
 			<key>Prompt Before Closing 2</key>
@@ -814,7 +818,38 @@
 			<key>Transparency</key>
 			<real>0.0</real>
 			<key>Triggers</key>
-			<array/>
+			<array>
+				<dict>
+					<key>action</key>
+					<string>ScriptTrigger</string>
+					<key>parameter</key>
+					<string>open "\0"</string>
+					<key>regex</key>
+					<string>https:\/\/fido-challenger\.githubapp\.com\/challenges\/[a-f0-9\-]+</string>
+				</dict>
+				<dict>
+					<key>action</key>
+					<string>PasswordTrigger</string>
+					<key>parameter</key>
+					<string>GitHub — BrentWheeldon</string>
+					<key>partial</key>
+					<true/>
+					<key>regex</key>
+					<string>Please enter your dotcom password:</string>
+				</dict>
+				<dict>
+					<key>action</key>
+					<string>PasswordTrigger</string>
+					<key>parameter</key>
+					<string>GitHub — BrentWheeldon</string>
+					<key>partial</key>
+					<true/>
+					<key>regex</key>
+					<string>github\.com password:</string>
+				</dict>
+			</array>
+			<key>Triggers Use Interpolated Strings</key>
+			<false/>
 			<key>Unlimited Scrollback</key>
 			<false/>
 			<key>Use Bold Font</key>
@@ -955,6 +990,8 @@
 	<key>findMode_iTerm</key>
 	<integer>0</integer>
 	<key>findRegex_iTerm</key>
+	<false/>
+	<key>kTurnOffSlowTriggersOfferUserDefaultsKey</key>
 	<false/>
 </dict>
 </plist>
