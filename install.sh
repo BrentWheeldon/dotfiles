@@ -82,5 +82,7 @@ touch $HOME/.bashrc.local
 mkdir -p $HOME/.ssh/sockets/
 
 if [ -n "${MAC}" ]; then
+  grep -q "/usr/local/bin/bash" /etc/shells || sudo sh -c 'echo "/usr/local/bin/bash" >> /etc/shells'
+  chsh -s /usr/local/bin/bash
   grep -q "helper = osxkeychain" ~/.gitconfig.local || echo -e "[credential]\n  helper = osxkeychain" >> ~/.gitconfig.local
 fi
