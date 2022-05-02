@@ -79,6 +79,8 @@ touch $HOME/.gitconfig.local
 touch $HOME/.bash_profile.local
 touch $HOME/.bashrc.local
 
+mkdir -p $HOME/.ssh/sockets/
+
 if [ -n "${MAC}" ]; then
   grep -q "helper = osxkeychain" ~/.gitconfig.local || echo -e "[credential]\n  helper = osxkeychain" >> ~/.gitconfig.local
 fi
