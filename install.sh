@@ -70,7 +70,7 @@ ln -sf {$BASE_DIRECTORY/,$HOME/.}gemrc
 ln -sf {$BASE_DIRECTORY/,$HOME/.}psqlrc
 ln -sf {$BASE_DIRECTORY/,$HOME/.}tmux.conf
 ln -sf {$BASE_DIRECTORY/,$HOME/.}tmux-overmind.conf
-mkdir -p $LAZYGIT_CONFIG_DIR
+mkdir -p "$LAZYGIT_CONFIG_DIR"
 ln -sf {$BASE_DIRECTORY/lazygit_,"$LAZYGIT_CONFIG_DIR"}config.yml
 
 nvim -u $HOME/.config/nvim/plugins.vim --headless -c "PlugInstall | qa"
