@@ -831,7 +831,7 @@
 					<key>action</key>
 					<string>PasswordTrigger</string>
 					<key>parameter</key>
-					<string>GitHub — BrentWheeldon</string>
+					<string>GitHub — brentwheeldon</string>
 					<key>partial</key>
 					<true/>
 					<key>regex</key>
@@ -841,7 +841,7 @@
 					<key>action</key>
 					<string>PasswordTrigger</string>
 					<key>parameter</key>
-					<string>GitHub — BrentWheeldon</string>
+					<string>GitHub — brentwheeldon</string>
 					<key>partial</key>
 					<true/>
 					<key>regex</key>
