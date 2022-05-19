@@ -47,7 +47,7 @@ alias fixit="git add . -A && git commit --amend -CHEAD"
 alias fixstructure="git reset db/structure.sql && sails db:migrate db:test:prepare && git add db/structure.sql && git rebase --continue"
 alias gogogo="gpr && bundle && spring stop && sails db:migrate db:test:prepare"
 alias got=git
-alias gpr="git fetch && git rebase origin/HEAD"
+alias gpr="default_branch=\$(git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@'); git fetch origin \$default_branch && git rebase origin/\$default_branch"
 alias gtx=gitx
 alias gut=git
 alias heroky=heroku
