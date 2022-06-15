@@ -6,6 +6,7 @@ Plug 'djoshea/vim-autoread' " update changed files
 Plug 'airblade/vim-gitgutter' " git status in gutter
 Plug 'altercation/vim-colors-solarized' " theme
 Plug 'dense-analysis/ale' " linting, etc.
+Plug 'github/copilot.vim' " copilot support
 Plug 'hashivim/vim-terraform' " tf formatting
 Plug 'jgdavey/vim-blockle' " easily move curser between start and end of blocks
 Plug 'jremmen/vim-ripgrep' " fast searching
@@ -19,6 +20,7 @@ Plug 'scrooloose/nerdcommenter' " comment niceties
 Plug 'scrooloose/nerdtree' " file explorer
 Plug 'tpope/vim-abolish' " word variant niceties
 Plug 'tpope/vim-endwise' " insert 'end's, etc.
+Plug 'tpope/vim-eunuch' " unix command niceties
 Plug 'tpope/vim-fugitive' " git niceties
 Plug 'tpope/vim-projectionist' " related files niceties
 Plug 'tpope/vim-rails' " rails niceties

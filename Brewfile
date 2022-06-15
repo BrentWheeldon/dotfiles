@@ -4,6 +4,7 @@ brew "gh"
 brew "git"
 brew "lazygit"
 brew "neovim"
+brew "node@16"
 brew "ripgrep"
 brew "tmux"
 

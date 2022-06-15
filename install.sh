@@ -22,6 +22,7 @@ if [ -n "${MAC}" ]; then
   LAZYGIT_CONFIG_DIR=$HOME/Library/Application\ Support/lazygit/
 
   brew bundle
+  brew link --overwrite node@16
 elif [ -n "${LINUX}" ]; then
   DIFF_HIGHLIGHT_PATH=/usr/share/doc/git/contrib/diff-highlight/
   BIN_PATH=/usr/bin/
@@ -39,6 +40,9 @@ elif [ -n "${LINUX}" ]; then
   curl -L -o neovim.tar.gz https://github.com/neovim/neovim/releases/download/stable/nvim-linux64.tar.gz
   tar -xzf neovim.tar.gz
   sudo ln -sf $(pwd)/nvim-linux64/bin/nvim $BIN_PATH
+
+  curl -fsSL https://deb.nodesource.com/setup_16.x | sudo -E bash -
+  sudo apt install -y nodejs
 
   cd -
 fi
