@@ -1,5 +1,3 @@
-eval "$($(brew --prefix)/bin/brew shellenv)"
-
 if [ -f ~/.profile ]; then
   . ~/.profile
 fi
