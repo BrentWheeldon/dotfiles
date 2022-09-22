@@ -7,7 +7,6 @@ brew "neovim"
 brew "node@16"
 brew "ripgrep"
 brew "tmux"
-brew "xterm"
 
 cask "docker"
 cask "dropbox"
