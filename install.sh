@@ -21,15 +21,15 @@ if [ -n "${MAC}" ]; then
   LAZYGIT_CONFIG_DIR=$HOME/Library/Application\ Support/lazygit/
 
   eval "$(/opt/homebrew/bin/brew shellenv)"
-
-  brew bundle
-  brew link --overwrite node@16
 elif [ -n "${LINUX}" ]; then
   BIN_PATH=/usr/bin/
   LAZYGIT_CONFIG_DIR=$HOME/.config/lazygit/
 
   eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 fi
+
+brew bundle
+brew link --overwrite node@16
 
 cd $(brew --prefix)/share/git-core/contrib/diff-highlight/
 sudo make
