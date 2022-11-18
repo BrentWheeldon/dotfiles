@@ -23,6 +23,10 @@ newtmux() {
   tmux attach-session -d -t "$session_name"
 }
 
+if [ -n "${MAC}" ] && [ -f $(brew --prefix)/etc/bash_completion ]; then
+  . $(brew --prefix)/etc/bash_completion
+fi
+
 shopt -s histappend
 PROMPT_COMMAND="history -a"
 
