@@ -41,6 +41,10 @@ export OVERMIND_TMUX_CONFIG="$HOME/.tmux-overmind.conf"
 export PATH="$PATH:$HOME/node_modules/.bin:$HOME/bin"
 export PS1="\[\e[00;32m\]\h\[\e[0m\]\[\e[00;37m\]:\[\e[0m\]\[\e[01;36m\]\W\[\e[0m\]\[\e[00;37m\] \[\e[0m\]\[\e[00;33m\]\$(parse_git_branch)\[\e[0m\]\[\e[00;37m\]\$ \[\e[0m\]"
 
+if [ -n "${CODESPACES}" ] && [ "$GITHUB_REPOSITORY" = "github/github" ]; then
+  export PATH="$PATH:./bin"
+fi
+
 alias gitprune="git remote prune origin && git prune"
 alias fixit="git add . -A && git commit --amend -CHEAD"
 alias fixstructure="git reset db/structure.sql && sails db:migrate db:test:prepare && git add db/structure.sql && git rebase --continue"
