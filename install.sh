@@ -50,6 +50,7 @@ mkdir -p $HOME/.config/nvim
 mkdir -p $HOME/.vim-tmp/backup
 ln -sf {$BASE_DIRECTORY/,$HOME/.config/nvim/}init.vim
 ln -sf {$BASE_DIRECTORY/,$HOME/.config/nvim/}plugins.vim
+ln -sf {$BASE_DIRECTORY/,$HOME/.config/nvim/}coc-settings.json
 ln -sf {$BASE_DIRECTORY/,$HOME/.}vimrc
 ln -sf {$BASE_DIRECTORY/,$HOME/.}gemrc
 ln -sf {$BASE_DIRECTORY/,$HOME/.}psqlrc
