@@ -12,42 +12,22 @@ elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
   export LINUX=1
 fi
 
+brew info > /dev/null || (NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)")
+
 if [ -n "${MAC}" ]; then
   defaults write com.apple.driver.AppleBluetoothMultitouch.mouse MouseButtonMode TwoButton
 
-  (brew info > /dev/null) || (/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)")
-
-  DIFF_HIGHLIGHT_PATH=$(brew --prefix)/share/git-core/contrib/diff-highlight/
   BIN_PATH=/usr/local/bin/
   LAZYGIT_CONFIG_DIR=$HOME/Library/Application\ Support/lazygit/
 
   brew bundle
   brew link --overwrite node@16
 elif [ -n "${LINUX}" ]; then
-  DIFF_HIGHLIGHT_PATH=/usr/share/doc/git/contrib/diff-highlight/
   BIN_PATH=/usr/bin/
   LAZYGIT_CONFIG_DIR=$HOME/.config/lazygit/
-
-  sudo apt-get update && sudo apt-get install -y git bash-completion ripgrep curl tmux
-
-  BINARY_DOWNLOADS_PATH=~/binary-downloads
-  mkdir -p $BINARY_DOWNLOADS_PATH
-  cd $BINARY_DOWNLOADS_PATH
-
-  curl -L -o lazygit.tar.gz https://github.com/jesseduffield/lazygit/releases/download/v0.29/lazygit_0.29_Linux_x86_64.tar.gz
-  tar -xzf lazygit.tar.gz
-  sudo ln -sf $(pwd)/lazygit $BIN_PATH
-  curl -L -o neovim.tar.gz https://github.com/neovim/neovim/releases/download/stable/nvim-linux64.tar.gz
-  tar -xzf neovim.tar.gz
-  sudo ln -sf $(pwd)/nvim-linux64/bin/nvim $BIN_PATH
-
-  curl -fsSL https://deb.nodesource.com/setup_16.x | sudo -E bash -
-  sudo apt install -y nodejs
-
-  cd -
 fi
 
-cd $DIFF_HIGHLIGHT_PATH
+cd $(brew --prefix)/share/git-core/contrib/diff-highlight/
 sudo make
 sudo cp -f diff-highlight $BIN_PATH
 sudo chmod +x $BIN_PATH/diff-highlight

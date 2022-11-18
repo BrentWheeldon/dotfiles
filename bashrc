@@ -3,6 +3,7 @@ if [ "$(uname)" == "Darwin" ]; then
   eval "$(/opt/homebrew/bin/brew shellenv)"
 elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
   export LINUX=1
+  eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 fi
 
 parse_git_branch() {
@@ -21,10 +22,6 @@ newtmux() {
   tmux new-window -d -n lazygit "lazygit; $SHELL"
   tmux attach-session -d -t "$session_name"
 }
-
-if [ -n "${MAC}" ] && [ -f $(brew --prefix)/etc/bash_completion ]; then
-  . $(brew --prefix)/etc/bash_completion
-fi
 
 shopt -s histappend
 PROMPT_COMMAND="history -a"
