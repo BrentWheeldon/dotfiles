@@ -160,8 +160,6 @@ let g:ale_sign_error = '✘'
 let g:ale_sign_warning = '✘'
 highlight ALEWarningSign ctermfg=Red
 
-let g:rg_command = 'rg --vimgrep --sort-files'
-
 let g:ale_linters = {'ruby': ['ruby', 'rubocop']}
 let g:ale_fixers = { '*': ['remove_trailing_lines', 'trim_whitespace'], 'ruby': ['rubocop', 'remove_trailing_lines', 'trim_whitespace'] }
 let g:ale_fix_on_save = 1
@@ -179,7 +177,7 @@ augroup markdown
   autocmd BufRead,BufNewFile *.md setlocal textwidth=80
 augroup END
 
-let g:rg_command = 'rg --vimgrep --hidden --sort path --iglob !.git/'
+let g:rg_command = 'rg --vimgrep --hidden --sort path --iglob !.git/ --iglob !sorbet/'
 
 " include custom directories so protoc doesn't fail
 let g:ale_proto_protoc_gen_lint_options='-I . -I proto'

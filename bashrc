@@ -33,7 +33,7 @@ PROMPT_COMMAND="history -a"
 export CLICOLOR=1
 export DOCKER_SCAN_SUGGEST=false
 export EDITOR=nvim
-export FZF_DEFAULT_COMMAND="rg --files"
+export FZF_DEFAULT_COMMAND="rg --files --hidden --follow -g '!{.git,sorbet,vendor/cache}/*'"
 export FZF_DEFAULT_OPTS='--preview="rougify -t monokai.sublime {}"'
 export GPG_TTY=$(tty)
 export HISTCONTROL=ignoredups
