@@ -1,6 +1,13 @@
 if [ "$(uname)" == "Darwin" ]; then
   export MAC=1
-  eval "$(/opt/homebrew/bin/brew shellenv)"
+
+  if [[ "$(/usr/bin/uname -m)" == "arm64" ]]
+  then
+    HOMEBREW_PREFIX="/opt/homebrew"
+  else
+    HOMEBREW_PREFIX="/usr/local"
+  fi
+  eval "$($HOMEBREW_PREFIX/bin/brew shellenv)"
 elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
   export LINUX=1
   eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"

@@ -8,6 +8,13 @@ set -x
 
 if [ "$(uname)" == "Darwin" ]; then
   export MAC=1
+
+  if [[ "$(/usr/bin/uname -m)" == "arm64" ]]
+  then
+    HOMEBREW_PREFIX="/opt/homebrew"
+  else
+    HOMEBREW_PREFIX="/usr/local"
+  fi
 elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
   export LINUX=1
 fi
@@ -21,7 +28,7 @@ if [ -n "${MAC}" ]; then
   BIN_PATH=/usr/local/bin/
   LAZYGIT_CONFIG_DIR=$HOME/Library/Application\ Support/lazygit/
 
-  eval "$(/opt/homebrew/bin/brew shellenv)"
+  eval "$($HOMEBREW_PREFIX/bin/brew shellenv)"
   brew bundle
   brew link --overwrite node@16
 elif [ -n "${LINUX}" ]; then
