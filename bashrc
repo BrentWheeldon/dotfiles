@@ -10,7 +10,6 @@ if [ "$(uname)" == "Darwin" ]; then
   eval "$($HOMEBREW_PREFIX/bin/brew shellenv)"
 elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
   export LINUX=1
-  eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 fi
 
 parse_git_branch() {
