@@ -15,7 +15,7 @@ Plug 'junegunn/fzf.vim' " fuzzy finding
 Plug 'machakann/vim-highlightedyank' " highlight yanked text
 Plug 'mkitt/tabline.vim' " nice tabs
 Plug 'neoclide/coc.nvim', {'branch': 'release'} " language server
-Plug 'ojroques/vim-oscyank' " SSH copy-paste
+Plug 'ojroques/vim-oscyank', {'commit': '14685fcc4f487ca42dfe786dd54e4b2913370085'} " SSH copy-paste
 Plug 'rodjek/vim-puppet' " puppet syntax highlighting
 Plug 'scrooloose/nerdcommenter' " comment niceties
 Plug 'scrooloose/nerdtree' " file explorer
