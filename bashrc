@@ -42,7 +42,7 @@ export EDITOR=nvim
 export FZF_DEFAULT_COMMAND="rg --files --hidden --follow -g '!{.git,sorbet,vendor/cache}/*'"
 export FZF_DEFAULT_OPTS='--preview="rougify -t monokai.sublime {}"'
 export GPG_TTY=$(tty)
-export HISTCONTROL=ignoredups
+export HISTCONTROL=ignoreboth
 export HISTFILESIZE=50000
 export HISTSIZE=50000
 export HISTTIMEFORMAT="%h %d %H:%M:%S "
