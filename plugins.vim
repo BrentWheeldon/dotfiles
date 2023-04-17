@@ -6,6 +6,7 @@ Plug 'djoshea/vim-autoread' " update changed files
 Plug 'airblade/vim-gitgutter' " git status in gutter
 Plug 'altercation/vim-colors-solarized' " theme
 Plug 'dense-analysis/ale' " linting, etc.
+Plug 'elixir-editors/vim-elixir' " elixir gear
 Plug 'hashivim/vim-terraform' " tf formatting
 Plug 'jgdavey/vim-blockle' " easily move curser between start and end of blocks
 Plug 'jremmen/vim-ripgrep' " fast searching
