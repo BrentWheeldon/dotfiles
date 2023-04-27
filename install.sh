@@ -21,6 +21,7 @@ fi
 
 if [ -n "${MAC}" ]; then
   defaults write com.apple.driver.AppleBluetoothMultitouch.mouse MouseButtonMode TwoButton
+  defaults write com.apple.desktopservices DSDontWriteNetworkStores true
 
   (brew info > /dev/null) || (NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)")
 
