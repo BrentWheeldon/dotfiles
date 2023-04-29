@@ -20,16 +20,18 @@ elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
 fi
 
 if [ -n "${MAC}" ]; then
+  # Initialize sudo (which is required by homebrew install
+  sudo hostname
   defaults write com.apple.driver.AppleBluetoothMultitouch.mouse MouseButtonMode TwoButton
   defaults write com.apple.desktopservices DSDontWriteNetworkStores true
 
   (brew info > /dev/null) || (NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)")
+  eval "$($HOMEBREW_PREFIX/bin/brew shellenv)"
 
   DIFF_HIGHLIGHT_PATH=$(brew --prefix)/share/git-core/contrib/diff-highlight/
   BIN_PATH=/usr/local/bin/
   LAZYGIT_CONFIG_DIR=$HOME/Library/Application\ Support/lazygit/
 
-  eval "$($HOMEBREW_PREFIX/bin/brew shellenv)"
   brew bundle
   brew link --overwrite node@16
 elif [ -n "${LINUX}" ]; then
@@ -97,7 +99,7 @@ touch $HOME/.bashrc.local
 mkdir -p $HOME/.ssh/sockets/
 
 if [ -n "${MAC}" ]; then
-  grep -q "/usr/local/bin/bash" /etc/shells || sudo sh -c 'echo "/usr/local/bin/bash" >> /etc/shells'
-  chsh -s /usr/local/bin/bash
+  grep -q "$HOMEBREW_PREFIX/bin/bash" /etc/shells || sudo sh -c "echo \"$HOMEBREW_PREFIX/bin/bash\" >> /etc/shells"
+  chsh -s $HOMEBREW_PREFIX/bin/bash
   grep -q "helper = osxkeychain" ~/.gitconfig.local || echo -e "[credential]\n  helper = osxkeychain" >> ~/.gitconfig.local
 fi
