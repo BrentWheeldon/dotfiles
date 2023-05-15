@@ -75,6 +75,7 @@ BASE_DIRECTORY=$(readlink -f $(dirname "${BASH_SOURCE[0]}"))
 
 ln -sf {$BASE_DIRECTORY/,$HOME/.}bashrc
 ln -sf {$BASE_DIRECTORY/,$HOME/.}bash_profile
+ln -sf {$BASE_DIRECTORY/,$HOME/.}bash-preexec.sh
 ln -sf {$BASE_DIRECTORY/,$HOME/.}gitconfig
 ln -sf {$BASE_DIRECTORY/,$HOME/.}inputrc
 mkdir -p $HOME/.config/nvim

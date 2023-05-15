@@ -1,3 +1,4 @@
+brew "atuin"
 brew "bash"
 brew "bash-completion"
 brew "curl"

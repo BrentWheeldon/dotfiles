@@ -33,9 +33,6 @@ if [ -n "${MAC}" ] && [ -f $(brew --prefix)/etc/bash_completion ]; then
   . $(brew --prefix)/etc/bash_completion
 fi
 
-shopt -s histappend
-PROMPT_COMMAND="history -a"
-
 export CLICOLOR=1
 export DOCKER_SCAN_SUGGEST=false
 export EDITOR=nvim
@@ -68,6 +65,10 @@ alias ll="ls -alh"
 alias moarcommits="git fetch --unshallow 2> /dev/null || true"
 alias shutupvim="rm /var/tmp/*.swp"
 alias wipit="git add . && git commit --no-verify -m wip"
+
+[[ -f ~/.bash-preexec.sh ]] && source ~/.bash-preexec.sh
+
+eval "$(atuin init bash)"
 
 if [ -f ~/.bashrc.local ]; then
   . ~/.bashrc.local
