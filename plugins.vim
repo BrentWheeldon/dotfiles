@@ -13,6 +13,7 @@ Plug 'jremmen/vim-ripgrep' " fast searching
 Plug 'junegunn/fzf' " fuzzy finding
 Plug 'junegunn/fzf.vim' " fuzzy finding
 Plug 'machakann/vim-highlightedyank' " highlight yanked text
+Plug 'mhinz/vim-mix-format' " format elixir
 Plug 'mkitt/tabline.vim' " nice tabs
 Plug 'neoclide/coc.nvim', {'branch': 'release'} " language server
 Plug 'ojroques/vim-oscyank', {'commit': '14685fcc4f487ca42dfe786dd54e4b2913370085'} " SSH copy-paste

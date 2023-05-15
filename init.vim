@@ -165,6 +165,8 @@ let g:ale_fixers = { '*': ['remove_trailing_lines', 'trim_whitespace'], 'ruby': 
 let g:ale_fix_on_save = 1
 let g:ale_ruby_rubocop_executable = 'bin/rubocop'
 
+let g:mix_format_on_save = 1
+
 augroup spelling
   autocmd!
   autocmd BufRead,BufNewFile *.md setlocal spell

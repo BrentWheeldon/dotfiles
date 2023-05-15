@@ -36,6 +36,7 @@ fi
 export CLICOLOR=1
 export DOCKER_SCAN_SUGGEST=false
 export EDITOR=nvim
+export ERL_AFLAGS="-kernel shell_history enabled"
 export FZF_DEFAULT_COMMAND="rg --files --hidden --follow -g '!{.git,sorbet,vendor/cache}/*'"
 export FZF_DEFAULT_OPTS='--preview="rougify -t monokai.sublime {}"'
 export GPG_TTY=$(tty)
