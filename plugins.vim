@@ -2,6 +2,7 @@ set nocompatible
 
 call plug#begin(stdpath('data') . '/plugged')
 
+Plug 'bignimbus/pop-punk.vim' " high contrast colour scheme
 Plug 'djoshea/vim-autoread' " update changed files
 Plug 'airblade/vim-gitgutter' " git status in gutter
 Plug 'altercation/vim-colors-solarized' " theme
