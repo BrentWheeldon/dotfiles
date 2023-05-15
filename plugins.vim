@@ -8,6 +8,7 @@ Plug 'altercation/vim-colors-solarized' " theme
 Plug 'dense-analysis/ale' " linting, etc.
 Plug 'elixir-editors/vim-elixir' " elixir gear
 Plug 'hashivim/vim-terraform' " tf formatting
+Plug 'Jorengarenar/COBOl.vim' " COBOL 🎉
 Plug 'jgdavey/vim-blockle' " easily move curser between start and end of blocks
 Plug 'jremmen/vim-ripgrep' " fast searching
 Plug 'junegunn/fzf' " fuzzy finding
