@@ -91,7 +91,7 @@ ln -sf {$BASE_DIRECTORY/,$HOME/.}tmux-overmind.conf
 mkdir -p "$LAZYGIT_CONFIG_DIR"
 ln -sf {$BASE_DIRECTORY/lazygit_,"$LAZYGIT_CONFIG_DIR"}config.yml
 
-nvim -u $HOME/.config/nvim/plugins.vim --headless -c "PlugInstall | qa"
+nvim -u $HOME/.config/nvim/plugins.vim --headless -c "PlugInstall | CocInstall coc-elixir | qa"
 
 touch $HOME/.gitconfig.local
 touch $HOME/.bash_profile.local
