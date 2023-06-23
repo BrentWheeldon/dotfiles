@@ -48,7 +48,6 @@ vnoremap <leader>P "+P
 
 " make me better at vim, kthxbai
 inoremap jk <esc>
-inoremap <esc> <nop>
 nnoremap <Up> <nop>
 nnoremap <Down> <nop>
 nnoremap <Left> <nop>
