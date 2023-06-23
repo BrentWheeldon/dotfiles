@@ -1,3 +1,5 @@
+tap "homebrew/cask-fonts"
+
 brew "atuin"
 brew "bash"
 brew "bash-completion"
@@ -13,6 +15,7 @@ brew "watchman"
 
 cask "docker"
 cask "dropbox"
+cask "font-meslo-lg-nerd-font"
 cask "gpg-suite-no-mail"
 cask "keepingyouawake"
 cask "rectangle"
