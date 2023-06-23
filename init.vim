@@ -46,24 +46,7 @@ nnoremap <leader>P "+P
 vnoremap <leader>p "+p
 vnoremap <leader>P "+P
 
-" make me better at vim, kthxbai
 inoremap jk <esc>
-nnoremap <Up> <nop>
-nnoremap <Down> <nop>
-nnoremap <Left> <nop>
-nnoremap <Right> <nop>
-inoremap <expr> <Up> pumvisible() ? "\<Up>" : ""
-inoremap <expr> <Down> pumvisible() ? "\<Down>" : ""
-inoremap <Left> <nop>
-inoremap <Right> <nop>
-vnoremap <Up> <nop>
-vnoremap <Down> <nop>
-vnoremap <Left> <nop>
-vnoremap <Right> <nop>
-
-" use C-j/k to go up/down in popup menu
-inoremap <expr> <C-J> pumvisible() ? "\<C-N>" : "j"
-inoremap <expr> <C-K> pumvisible() ? "\<C-P>" : "k"
 
 " No, I _never_ want to use ed mode
 nnoremap Q <nop>
@@ -158,24 +141,6 @@ let ruby_operators=1
 highlight clear SignColumn
 call gitgutter#highlight#define_highlights()
 
-let g:ale_sign_error = '✘'
-let g:ale_sign_warning = '✘'
-highlight ALEWarningSign ctermfg=Red
-
-let g:ale_linters = {
-      \ 'ruby': ['ruby', 'rubocop'],
-      \ 'elixir': ['credo']
-      \}
-let g:ale_linters_explicit = 1
-let g:ale_fixers = { '*': ['remove_trailing_lines', 'trim_whitespace'], 'ruby': ['rubocop', 'remove_trailing_lines', 'trim_whitespace'] }
-let g:ale_fixers = {
-      \ '*': ['remove_trailing_lines', 'trim_whitespace'],
-      \ 'ruby': ['rubocop', 'remove_trailing_lines', 'trim_whitespace'],
-      \   'elixir': ['mix_format'],
-      \}
-let g:ale_fix_on_save = 1
-let g:ale_ruby_rubocop_executable = 'bin/rubocop'
-
 augroup spelling
   autocmd!
   autocmd BufRead,BufNewFile *.md setlocal spell
@@ -190,20 +155,24 @@ augroup END
 
 let g:rg_command = 'rg --vimgrep --hidden --sort path --iglob !.git/ --iglob !sorbet/'
 
-" include custom directories so protoc doesn't fail
-let g:ale_proto_protoc_gen_lint_options='-I . -I proto'
+" Use tab for trigger completion with characters ahead and navigate
+inoremap <silent><expr> <TAB>
+      \ coc#pum#visible() ? coc#pum#next(1) :
+      \ CheckBackspace() ? "\<Tab>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
 
-" Local config
-if filereadable($HOME . "/.config/nvim/local.vim")
-  source ~/.config/nvim/local.vim
-endif
+" Make <CR> to accept selected completion item or notify coc.nvim to format
+" <C-g>u breaks current undo, please make your own choice
+inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
+                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
 function! CheckBackspace() abort
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
-" Use <c-space> to trigger completion.
+" Use <c-space> to trigger completion
 if has('nvim')
   inoremap <silent><expr> <c-space> coc#refresh()
 else
@@ -211,17 +180,17 @@ else
 endif
 
 " Use `[g` and `]g` to navigate diagnostics
-" Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
+" Use `:CocDiagnostics` to get all diagnostics of current buffer in location list
 nmap <silent> [g <Plug>(coc-diagnostic-prev)
 nmap <silent> ]g <Plug>(coc-diagnostic-next)
 
-" GoTo code navigation.
+" GoTo code navigation
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 
-" Use K to show documentation in preview window.
+" Use K to show documentation in preview window
 nnoremap <silent> K :call ShowDocumentation()<CR>
 
 function! ShowDocumentation()
@@ -232,35 +201,42 @@ function! ShowDocumentation()
   endif
 endfunction
 
-" Highlight the symbol and its references when holding the cursor.
+" Highlight the symbol and its references when holding the cursor
 autocmd CursorHold * silent call CocActionAsync('highlight')
 
-" Symbol renaming.
+" Symbol renaming
 nmap <leader>rn <Plug>(coc-rename)
 
 augroup mygroup
   autocmd!
-  " Setup formatexpr specified filetype(s).
+  " Setup formatexpr specified filetype(s)
   autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
-  " Update signature help on jump placeholder.
+  " Update signature help on jump placeholder
   autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
 augroup end
 
-" Applying codeAction to the selected region.
+" Applying code actions to the selected code block
 " Example: `<leader>aap` for current paragraph
 xmap <leader>a  <Plug>(coc-codeaction-selected)
 nmap <leader>a  <Plug>(coc-codeaction-selected)
 
-" Remap keys for applying codeAction to the current buffer.
-nmap <leader>ac  <Plug>(coc-codeaction)
-" Apply AutoFix to problem on the current line.
+" Remap keys for applying code actions at the cursor position
+nmap <leader>ac  <Plug>(coc-codeaction-cursor)
+" Remap keys for apply code actions affect whole buffer
+nmap <leader>as  <Plug>(coc-codeaction-source)
+" Apply the most preferred quickfix action to fix diagnostic on the current line
 nmap <leader>qf  <Plug>(coc-fix-current)
 
-" Run the Code Lens action on the current line.
+" Remap keys for applying refactor code actions
+nmap <silent> <leader>re <Plug>(coc-codeaction-refactor)
+xmap <silent> <leader>r  <Plug>(coc-codeaction-refactor-selected)
+nmap <silent> <leader>r  <Plug>(coc-codeaction-refactor-selected)
+
+" Run the Code Lens action on the current line
 nmap <leader>cl  <Plug>(coc-codelens-action)
 
 " Map function and class text objects
-" NOTE: Requires 'textDocument.documentSymbol' support from the language server.
+" NOTE: Requires 'textDocument.documentSymbol' support from the language server
 xmap if <Plug>(coc-funcobj-i)
 omap if <Plug>(coc-funcobj-i)
 xmap af <Plug>(coc-funcobj-a)
@@ -270,7 +246,7 @@ omap ic <Plug>(coc-classobj-i)
 xmap ac <Plug>(coc-classobj-a)
 omap ac <Plug>(coc-classobj-a)
 
-" Remap <C-f> and <C-b> for scroll float windows/popups.
+" Remap <C-f> and <C-b> to scroll float windows/popups
 if has('nvim-0.4.0') || has('patch-8.2.0750')
   nnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
   nnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
@@ -280,39 +256,47 @@ if has('nvim-0.4.0') || has('patch-8.2.0750')
   vnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
 endif
 
-" Use CTRL-S for selections ranges.
-" Requires 'textDocument/selectionRange' support of language server.
+" Use CTRL-S for selections ranges
+" Requires 'textDocument/selectionRange' support of language server
 nmap <silent> <C-s> <Plug>(coc-range-select)
 xmap <silent> <C-s> <Plug>(coc-range-select)
 
-" Add `:Format` command to format current buffer.
+" Add `:Format` command to format current buffer
 command! -nargs=0 Format :call CocActionAsync('format')
 
-" Add `:Fold` command to fold current buffer.
+" Add `:Fold` command to fold current buffer
 command! -nargs=? Fold :call     CocAction('fold', <f-args>)
 
-" Add `:OR` command for organize imports of the current buffer.
+" Add `:OR` command for organize imports of the current buffer
 command! -nargs=0 OR   :call     CocActionAsync('runCommand', 'editor.action.organizeImport')
 
-" Add (Neo)Vim's native statusline support.
-" NOTE: Please see `:h coc-status` for integrations with external plugins that
-" provide custom statusline: lightline.vim, vim-airline.
-set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
+" Add (Neo)Vim's native statusline support
+let g:airline#extensions#coc#enabled = 1
+let airline#extensions#coc#error_symbol = 'E:'
+let airline#extensions#coc#warning_symbol = 'W:'
+let g:airline#extensions#coc#show_coc_status = 1
+let airline#extensions#coc#stl_format_err = '%C(L%L)'
+let airline#extensions#coc#stl_format_warn = '%C(L%L)'
 
 " Mappings for CoCList
-" Show all diagnostics.
+" Show all diagnostics
 nnoremap <silent><nowait> <space>a  :<C-u>CocList diagnostics<cr>
-" Manage extensions.
+" Manage extensions
 nnoremap <silent><nowait> <space>e  :<C-u>CocList extensions<cr>
-" Show commands.
+" Show commands
 nnoremap <silent><nowait> <space>c  :<C-u>CocList commands<cr>
-" Find symbol of current document.
+" Find symbol of current document
 nnoremap <silent><nowait> <space>o  :<C-u>CocList outline<cr>
-" Search workspace symbols.
+" Search workspace symbols
 nnoremap <silent><nowait> <space>s  :<C-u>CocList -I symbols<cr>
-" Do default action for next item.
+" Do default action for next item
 nnoremap <silent><nowait> <space>j  :<C-u>CocNext<CR>
-" Do default action for previous item.
+" Do default action for previous item
 nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
-" Resume latest coc list.
-nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>"
+" Resume latest coc list
+nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
+
+" Local config
+if filereadable($HOME . "/.config/nvim/local.vim")
+  source ~/.config/nvim/local.vim
+endif

@@ -8,5 +8,6 @@
       "initializationOptions": {},
       "settings": {}
     }
-  }
+  },
+  "elixir.pathToElixirLS": "/opt/homebrew/Cellar/elixir-ls/0.15.0/bin/elixir-ls"
 }
