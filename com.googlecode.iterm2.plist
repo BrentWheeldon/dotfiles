@@ -822,36 +822,7 @@
 			<key>Transparency</key>
 			<real>0.0</real>
 			<key>Triggers</key>
-			<array>
-				<dict>
-					<key>action</key>
-					<string>ScriptTrigger</string>
-					<key>parameter</key>
-					<string>open "\0"</string>
-					<key>regex</key>
-					<string>https:\/\/fido-challenger\.githubapp\.com\/challenges\/[a-f0-9\-]+</string>
-				</dict>
-				<dict>
-					<key>action</key>
-					<string>PasswordTrigger</string>
-					<key>parameter</key>
-					<string>GitHub — brentwheeldon</string>
-					<key>partial</key>
-					<true/>
-					<key>regex</key>
-					<string>Please enter your dotcom password:</string>
-				</dict>
-				<dict>
-					<key>action</key>
-					<string>PasswordTrigger</string>
-					<key>parameter</key>
-					<string>GitHub — brentwheeldon</string>
-					<key>partial</key>
-					<true/>
-					<key>regex</key>
-					<string>github\.com password:</string>
-				</dict>
-			</array>
+			<array/>
 			<key>Triggers Use Interpolated Strings</key>
 			<false/>
 			<key>Unlimited Scrollback</key>
