@@ -23,6 +23,7 @@ loopy() {
 
 newtmux() {
   session_name="${1:-$(sed 's/\./-/g' <<<"$(basename `pwd`)")}"
+  tmux attach-session -t "$session_name" && return
   tmux new-session -d -s "$session_name"
   tmux new-window -d -n vim "nvim; $SHELL"
   tmux new-window -d -n lazygit "lazygit; $SHELL"
