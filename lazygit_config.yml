@@ -1,2 +1,4 @@
 ---
 disableStartupPopups: true
+gui:
+  showFileTree: false
