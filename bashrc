@@ -18,7 +18,12 @@ parse_git_branch() {
 export -f parse_git_branch
 
 loopy() {
-  for i in {1..10}; do $1; done
+  local command="$1"
+  local count="${2:-10}"
+
+  for ((i=0;i<$count;i++)); do
+    $command
+  done
 }
 
 newtmux() {
