@@ -296,6 +296,28 @@ nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list
 nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 
+let g:projectionist_heuristics = {
+      \  "lib/**/*.ex": {
+      \    "alternate": "test/{}_test.exs",
+      \    "type": "source",
+      \    "template": [
+      \      "defmodule {camelcase|capitalize|dot} do",
+      \      "end"
+      \    ]
+      \  },
+      \  "test/**/*_test.exs": {
+      \    "alternate": "lib/{}.ex",
+      \    "type": "test",
+      \   "template": [
+      \     "defmodule {camelcase|capitalize|dot}Test do",
+      \     "  use ExUnit.Case, async: true",
+      \     "",
+      \     "  alias {camelcase|capitalize|dot}",
+      \     "end"
+      \   ]
+      \  }
+      \}
+
 " Local config
 if filereadable($HOME . "/.config/nvim/local.vim")
   source ~/.config/nvim/local.vim

@@ -5,7 +5,9 @@ call plug#begin(stdpath('data') . '/plugged')
 Plug 'Jorengarenar/COBOl.vim' " COBOL 🎉
 Plug 'airblade/vim-gitgutter' " git status in gutter
 Plug 'altercation/vim-colors-solarized' " theme
+Plug 'andyl/vim-projectionist-elixir' " elixir projectionist
 Plug 'bignimbus/pop-punk.vim' " high contrast colour scheme
+Plug 'c-brenn/fuzzy-projectionist.vim' " fuzzy finding for projectionist
 Plug 'djoshea/vim-autoread' " update changed files
 Plug 'elixir-editors/vim-elixir' " elixir gear
 Plug 'github/copilot.vim' " co-pilot
