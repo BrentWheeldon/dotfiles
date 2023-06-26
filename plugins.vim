@@ -2,14 +2,14 @@ set nocompatible
 
 call plug#begin(stdpath('data') . '/plugged')
 
-Plug 'bignimbus/pop-punk.vim' " high contrast colour scheme
-Plug 'djoshea/vim-autoread' " update changed files
+Plug 'Jorengarenar/COBOl.vim' " COBOL 🎉
 Plug 'airblade/vim-gitgutter' " git status in gutter
 Plug 'altercation/vim-colors-solarized' " theme
+Plug 'bignimbus/pop-punk.vim' " high contrast colour scheme
+Plug 'djoshea/vim-autoread' " update changed files
 Plug 'elixir-editors/vim-elixir' " elixir gear
 Plug 'github/copilot.vim' " co-pilot
 Plug 'hashivim/vim-terraform' " tf formatting
-Plug 'Jorengarenar/COBOl.vim' " COBOL 🎉
 Plug 'jgdavey/vim-blockle' " easily move curser between start and end of blocks
 Plug 'jremmen/vim-ripgrep' " fast searching
 Plug 'junegunn/fzf' " fuzzy finding
