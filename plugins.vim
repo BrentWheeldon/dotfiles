@@ -6,6 +6,7 @@ Plug 'Jorengarenar/COBOl.vim' " COBOL 🎉
 Plug 'airblade/vim-gitgutter' " git status in gutter
 Plug 'altercation/vim-colors-solarized' " theme
 Plug 'andyl/vim-projectionist-elixir' " elixir projectionist
+Plug 'ayu-theme/ayu-vim' " colour scheme
 Plug 'bignimbus/pop-punk.vim' " high contrast colour scheme
 Plug 'c-brenn/fuzzy-projectionist.vim' " fuzzy finding for projectionist
 Plug 'djoshea/vim-autoread' " update changed files
