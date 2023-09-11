@@ -71,6 +71,9 @@ cd $HOME/.elixir-ls
 mix deps.get && mix compile && mix elixir_ls.release -o release
 cd -
 
+rm -rf $HOME/.asdf
+git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.12.0
+
 rm -rf $HOME/.fzf
 git clone --depth 1 https://github.com/junegunn/fzf.git $HOME/.fzf
 $HOME/.fzf/install --all
@@ -84,6 +87,7 @@ ln -sf {$BASE_DIRECTORY/,$HOME/.}bashrc
 ln -sf {$BASE_DIRECTORY/,$HOME/.}bash_profile
 ln -sf {$BASE_DIRECTORY/,$HOME/.}bash-preexec.sh
 ln -sf {$BASE_DIRECTORY/,$HOME/.}gitconfig
+ln -sf {$BASE_DIRECTORY/,$HOME/.}gitignore_global
 ln -sf {$BASE_DIRECTORY/,$HOME/.}inputrc
 mkdir -p $HOME/.config/nvim
 mkdir -p $HOME/.vim-tmp/backup
@@ -98,7 +102,7 @@ ln -sf {$BASE_DIRECTORY/,$HOME/.}tmux-overmind.conf
 mkdir -p "$LAZYGIT_CONFIG_DIR"
 ln -sf {$BASE_DIRECTORY/lazygit_,"$LAZYGIT_CONFIG_DIR"}config.yml
 
-nvim -u $HOME/.config/nvim/plugins.vim --headless -c "PlugInstall | CocInstall coc-elixir | qa"
+nvim -u $HOME/.config/nvim/plugins.vim --headless -c "PlugInstall | qa"
 
 touch $HOME/.gitconfig.local
 touch $HOME/.bash_profile.local

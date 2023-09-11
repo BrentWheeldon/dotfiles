@@ -7,7 +7,11 @@ if [ "$(uname)" == "Darwin" ]; then
   else
     HOMEBREW_PREFIX="/usr/local"
   fi
-  eval "$($HOMEBREW_PREFIX/bin/brew shellenv)"
+
+  if [[ -z "${HOMEBREW_SHELLENV}" ]]; then
+    eval "$($HOMEBREW_PREFIX/bin/brew shellenv)"
+    export HOMEBREW_SHELLENV=1
+  fi
 elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
   export LINUX=1
 fi
@@ -68,6 +72,9 @@ alias wipit="git add . && git commit --no-verify -m wip"
 [[ -f ~/.bash-preexec.sh ]] && source ~/.bash-preexec.sh
 
 eval "$(atuin init bash)"
+
+. "$HOME/.asdf/asdf.sh"
+. "$HOME/.asdf/completions/asdf.bash"
 
 if [ -f ~/.bashrc.local ]; then
   . ~/.bashrc.local
