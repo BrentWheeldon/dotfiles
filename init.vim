@@ -58,6 +58,8 @@ iabbrev fsl # frozen_string_literal: true<cr><BS><BS>
 iabbrev pryy require "pry"; binding.pry
 iabbrev pwbrandon Co-authored-by: Brandon Duff <brandon@mechanical-orchard.com>
 iabbrev pwjeff Co-authored-by: Jeff Schomay <jeff@mechanical-orchard.com>
+iabbrev pwkate Co-authored-by: Kate Spinney <kate@mechanical-orchard.com>
+iabbrev pwjb Co-authored-by: JB Steadman <jbsf2@users.noreply.github.com>
 iabbrev pw-- Co-authored-by: TBD <tbd@mechanical-orchard.com>
 
 syntax enable
