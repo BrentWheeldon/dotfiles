@@ -2,15 +2,20 @@
   "languageserver": {
     "sorbet": {
       "command": "srb",
-      "args": ["tc", "--lsp", "--enable-all-experimental-lsp-features"],
-      "filetypes": ["ruby"],
-      "rootPatterns": ["sorbet/config"],
+      "args": [
+        "tc",
+        "--lsp",
+        "--enable-all-experimental-lsp-features"
+      ],
+      "filetypes": [
+        "ruby"
+      ],
+      "rootPatterns": [
+        "sorbet/config"
+      ],
       "initializationOptions": {},
       "settings": {}
     }
   },
-  "coc.preferences.formatOnSaveFiletypes": [
-    "elixir"
-  ],
-  "elixir.pathToElixirLS": "~/.elixir-ls/release/language_server.sh"
+  "coc.preferences.formatOnSave": true
 }
