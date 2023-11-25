@@ -34,6 +34,8 @@ if [ -n "${MAC}" ]; then
 
   brew bundle
   brew link --overwrite node@16
+
+  curl https://raw.githubusercontent.com/rcaloras/bash-preexec/master/bash-preexec.sh -o ~/.bash-preexec.sh
 elif [ -n "${LINUX}" ]; then
   DIFF_HIGHLIGHT_PATH=/usr/share/doc/git/contrib/diff-highlight/
   BIN_PATH=/usr/bin/
@@ -62,6 +64,11 @@ cd $DIFF_HIGHLIGHT_PATH
 sudo make
 sudo cp -f diff-highlight $BIN_PATH
 sudo chmod +x $BIN_PATH/diff-highlight
+cd -
+
+git clone https://github.com/elixir-lsp/elixir-ls.git $HOME/.elixir-ls
+cd $HOME/.elixir-ls
+mix deps.get && mix compile && mix elixir_ls.release -o release
 cd -
 
 rm -rf $HOME/.fzf
