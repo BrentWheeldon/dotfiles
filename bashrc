@@ -62,6 +62,7 @@ alias got=git
 alias gpr="default_branch=\$(git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@'); git fetch origin \$default_branch && git rebase origin/\$default_branch"
 alias gut=git
 alias ll="ls -alh"
+alias t="mix test"
 alias wipit="git add . && git commit --no-verify -m wip"
 
 [[ -f ~/.bash-preexec.sh ]] && source ~/.bash-preexec.sh
@@ -77,3 +78,5 @@ fi
 . "/opt/homebrew/opt/asdf/libexec/asdf.sh"
 
 . "/opt/homebrew/opt/asdf/etc/bash_completion.d/asdf.bash"
+
+eval "$(direnv hook bash)"
