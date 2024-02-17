@@ -47,13 +47,6 @@ inoremap jk <esc>
 " No, I _never_ want to use ed mode
 nnoremap Q <nop>
 
-" stuff to make filetype specific
-iabbrev pwbrandon Co-authored-by: Brandon Duff <brandon@mechanical-orchard.com>
-iabbrev pwjeff Co-authored-by: Jeff Schomay <jeff@mechanical-orchard.com>
-iabbrev pwkate Co-authored-by: Kate Spinney <kate@mechanical-orchard.com>
-iabbrev pwjb Co-authored-by: JB Steadman <jbsf2@users.noreply.github.com>
-iabbrev pw-- Co-authored-by: TBD <tbd@mechanical-orchard.com>
-
 syntax enable
 set background=dark
 let g:solarized_termcolors = 256
