@@ -66,7 +66,7 @@ sudo cp -f diff-highlight $BIN_PATH
 sudo chmod +x $BIN_PATH/diff-highlight
 cd -
 
-git clone https://github.com/elixir-lsp/elixir-ls.git $HOME/.elixir-ls
+ls $HOME/.elixir-ls > /dev/null || git clone https://github.com/elixir-lsp/elixir-ls.git $HOME/.elixir-ls
 cd $HOME/.elixir-ls
 mix deps.get && mix compile && mix elixir_ls.release -o release
 cd -
