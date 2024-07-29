@@ -257,6 +257,25 @@ let g:projectionist_heuristics = {
       \  }
       \}
 
+autocmd FileType cobol setlocal iskeyword+=-
+
+lua << EOF
+require("neotest").setup{
+  adapters = {
+    require("neotest-elixir"){
+      -- Wrap the elixir command in direnv exec . to load the nix environment
+      post_process_command = function(cmd)
+        return vim.tbl_flatten({{"direnv", "exec", "."}, cmd})
+      end,
+    }
+  }
+}
+EOF
+
+noremap <leader>t   :lua require("neotest").run.run()<CR>
+noremap <leader>T   :lua require("neotest").run.run(vim.fn.expand("%"))<CR>
+noremap <leader>st  :lua require("neotest").summary.open()<CR>
+
 " Local config
 if filereadable($HOME . "/.config/nvim/local.vim")
   source ~/.config/nvim/local.vim

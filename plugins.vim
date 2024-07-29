@@ -13,6 +13,7 @@ Plug 'djoshea/vim-autoread' " update changed files
 Plug 'elixir-editors/vim-elixir' " elixir gear
 Plug 'github/copilot.vim' " co-pilot
 Plug 'hashivim/vim-terraform' " tf formatting
+Plug 'jfpedroza/neotest-elixir' " elixir test runner
 Plug 'jgdavey/vim-blockle' " easily move curser between start and end of blocks
 Plug 'jremmen/vim-ripgrep' " fast searching
 Plug 'junegunn/fzf' " fuzzy finding
@@ -20,6 +21,10 @@ Plug 'junegunn/fzf.vim' " fuzzy finding
 Plug 'machakann/vim-highlightedyank' " highlight yanked text
 Plug 'mkitt/tabline.vim' " nice tabs
 Plug 'neoclide/coc.nvim', {'branch': 'release'} " language server
+Plug 'nvim-lua/plenary.nvim' " lua testing
+Plug 'nvim-neotest/neotest' " test runner
+Plug 'nvim-neotest/nvim-nio' " test runner
+Plug 'nvim-treesitter/nvim-treesitter' " syntax highlighting
 Plug 'ojroques/vim-oscyank', {'commit': '14685fcc4f487ca42dfe786dd54e4b2913370085'} " SSH copy-paste
 Plug 'rodjek/vim-puppet' " puppet syntax highlighting
 Plug 'scrooloose/nerdcommenter' " comment niceties
