@@ -75,6 +75,8 @@ eval "$(atuin init bash)"
 . "$HOME/.asdf/asdf.sh"
 . "$HOME/.asdf/completions/asdf.bash"
 
+ulimit -n unlimited
+
 if [ -f ~/.bashrc.local ]; then
   . ~/.bashrc.local
 fi
