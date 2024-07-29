@@ -9,3 +9,4 @@ fi
 if [ -f $HOME/.bashrc ]; then
   . $HOME/.bashrc
 fi
+source <(kubectl completion bash)

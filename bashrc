@@ -39,9 +39,8 @@ newtmux() {
   tmux attach-session -d -t "$session_name"
 }
 
-if [ -n "${MAC}" ] && [ -f $(brew --prefix)/etc/bash_completion ]; then
-  . $(brew --prefix)/etc/bash_completion
-fi
+[ -n "${MAC}" ] && [[ -r "$(brew --prefix)/etc/profile.d/bash_completion.sh" ]] && . "$(brew --prefix)/etc/profile.d/bash_completion.sh"
+source <(kubectl completion bash)
 
 export CLICOLOR=1
 export DOCKER_SCAN_SUGGEST=false

@@ -36,6 +36,7 @@ if [ -n "${MAC}" ]; then
   brew link --overwrite node@16
 
   curl https://raw.githubusercontent.com/rcaloras/bash-preexec/master/bash-preexec.sh -o ~/.bash-preexec.sh
+  kubectl completion bash >$(brew --prefix)/etc/bash_completion.d/kubectl
 elif [ -n "${LINUX}" ]; then
   DIFF_HIGHLIGHT_PATH=/usr/share/doc/git/contrib/diff-highlight/
   BIN_PATH=/usr/bin/
