@@ -4,7 +4,6 @@ call plug#begin(stdpath('data') . '/plugged')
 
 Plug 'Jorengarenar/COBOl.vim' " COBOL 🎉
 Plug 'airblade/vim-gitgutter' " git status in gutter
-Plug 'altercation/vim-colors-solarized' " theme
 Plug 'andyl/vim-projectionist-elixir' " elixir projectionist
 Plug 'ayu-theme/ayu-vim' " colour scheme
 Plug 'bignimbus/pop-punk.vim' " high contrast colour scheme
@@ -19,6 +18,7 @@ Plug 'jremmen/vim-ripgrep' " fast searching
 Plug 'junegunn/fzf' " fuzzy finding
 Plug 'junegunn/fzf.vim' " fuzzy finding
 Plug 'machakann/vim-highlightedyank' " highlight yanked text
+Plug 'maxmx03/solarized.nvim' " solarized colour scheme
 Plug 'mkitt/tabline.vim' " nice tabs
 Plug 'neoclide/coc.nvim', {'branch': 'release'} " language server
 Plug 'nvim-lua/plenary.nvim' " lua testing
