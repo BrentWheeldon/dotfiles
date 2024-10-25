@@ -72,9 +72,6 @@ alias wipit="git add . && git commit --no-verify -m wip"
 
 eval "$(atuin init bash)"
 
-. "$HOME/.asdf/asdf.sh"
-. "$HOME/.asdf/completions/asdf.bash"
-
 ulimit -n unlimited
 
 if [ -f ~/.bashrc.local ]; then
@@ -83,8 +80,8 @@ fi
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
-. "/opt/homebrew/opt/asdf/libexec/asdf.sh"
+. "$HOMEBREW_PREFIX/opt/asdf/libexec/asdf.sh"
 
-. "/opt/homebrew/opt/asdf/etc/bash_completion.d/asdf.bash"
+. "$HOMEBREW_PREFIX/opt/asdf/etc/bash_completion.d/asdf.bash"
 
 eval "$(direnv hook bash)"

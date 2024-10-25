@@ -67,14 +67,6 @@ sudo cp -f diff-highlight $BIN_PATH
 sudo chmod +x $BIN_PATH/diff-highlight
 cd -
 
-ls $HOME/.elixir-ls > /dev/null || git clone https://github.com/elixir-lsp/elixir-ls.git $HOME/.elixir-ls
-cd $HOME/.elixir-ls
-mix deps.get && mix compile && mix elixir_ls.release -o release
-cd -
-
-rm -rf $HOME/.asdf
-git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.12.0
-
 rm -rf $HOME/.fzf
 git clone --depth 1 https://github.com/junegunn/fzf.git $HOME/.fzf
 $HOME/.fzf/install --all
@@ -105,6 +97,7 @@ ln -sf {$BASE_DIRECTORY/lazygit_,"$LAZYGIT_CONFIG_DIR"}config.yml
 
 nvim -u $HOME/.config/nvim/plugins.vim --headless -c "PlugInstall | qa"
 nvim -u $HOME/.config/nvim/plugins.vim --headless -c "TSInstall elixir | qa"
+nvim -u $HOME/.config/nvim/plugins.vim --headless -c "CocInstall coc-solargraph | qa"
 
 touch $HOME/.gitconfig.local
 touch $HOME/.bash_profile.local
