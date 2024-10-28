@@ -96,7 +96,7 @@ mkdir -p "$LAZYGIT_CONFIG_DIR"
 ln -sf {$BASE_DIRECTORY/lazygit_,"$LAZYGIT_CONFIG_DIR"}config.yml
 
 nvim -u $HOME/.config/nvim/plugins.vim --headless -c "PlugInstall | qa"
-nvim -u $HOME/.config/nvim/plugins.vim --headless -c "TSInstall elixir | qa"
+nvim -u $HOME/.config/nvim/plugins.vim --headless -c "TSInstall! elixir | qa"
 nvim -u $HOME/.config/nvim/plugins.vim --headless -c "CocInstall coc-solargraph | qa"
 
 touch $HOME/.gitconfig.local
