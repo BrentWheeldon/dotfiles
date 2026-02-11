@@ -39,6 +39,10 @@ newtmux() {
   tmux attach-session -d -t "$session_name"
 }
 
+fix-git-head() {
+  git remote set-head origin --auto
+}
+
 [ -n "${MAC}" ] && [[ -r "$(brew --prefix)/etc/profile.d/bash_completion.sh" ]] && . "$(brew --prefix)/etc/profile.d/bash_completion.sh"
 source <(kubectl completion bash)
 
@@ -54,7 +58,7 @@ export HISTFILESIZE=50000
 export HISTSIZE=50000
 export HISTTIMEFORMAT="%h %d %H:%M:%S "
 export LSCOLORS=ExFxCxDxBxegedabagacad
-export PATH="$PATH:$HOME/node_modules/.bin:$HOME/bin"
+export PATH="$(brew --prefix)/bin:$PATH:$HOME/node_modules/.bin:$HOME/bin"
 export PS1="\[\e[00;32m\]\h\[\e[0m\]\[\e[00;37m\]:\[\e[0m\]\[\e[01;36m\]\W\[\e[0m\]\[\e[00;37m\] \[\e[0m\]\[\e[00;33m\]\$(parse_git_branch)\[\e[0m\]\[\e[00;37m\]\$ \[\e[0m\]"
 
 alias gitprune="git remote prune origin && git prune"
@@ -79,9 +83,5 @@ if [ -f ~/.bashrc.local ]; then
 fi
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
-
-. "$HOMEBREW_PREFIX/opt/asdf/libexec/asdf.sh"
-
-. "$HOMEBREW_PREFIX/opt/asdf/etc/bash_completion.d/asdf.bash"
 
 eval "$(direnv hook bash)"

@@ -8,12 +8,21 @@
   ctags = !.git/hooks/ctags
 [fetch]
   prune = true
+  pruneTags = true
+  all = true
+[merge]
+  conflictstyle = zdiff3
+[rerere]
+  enabled = true
+  autoupdate = true
 [format]
   pretty = format:%C(yellow)%h %Cred%ad %Cblue%an%Cgreen%d %Creset%s
 [log]
   date = short
 [push]
-  default = current
+  default = simple
+  autoSetupRemote = true
+  followTags = true
 [include]
   path = ~/.gitconfig.local
 [core]
@@ -22,7 +31,10 @@
 [color]
   ui = true
 [diff]
-  compactionHeuristic = 1
+  algorithm = histogram
+  colorMoved = plain
+  mnemonicPrefix = true
+  renames = true
 [pager]
   log = diff-highlight | less
   show = diff-highlight | less
@@ -33,7 +45,8 @@
   templatedir = ~/.git_template
   defaultBranch = main
 [commit]
-  gpgsign = true
+  verbose = true
+  gpgsign = false
 [color "diff-highlight"]
   oldNormal = red bold
   oldHighlight = red bold 52
@@ -49,9 +62,18 @@
 [pull]
   rebase = true
 [rebase]
+  autoSquash = true
   autoStash = true
 [filter "lfs"]
   clean = git-lfs clean -- %f
   smudge = git-lfs smudge -- %f
   process = git-lfs filter-process
   required = true
+[help]
+  autocorrect = prompt
+[column]
+  ui = auto
+[branch]
+  sort = -committerdate
+[tag]
+  sort = version:refname
