@@ -11,6 +11,9 @@ Plug 'bignimbus/pop-punk.vim' " high contrast colour scheme
 Plug 'c-brenn/fuzzy-projectionist.vim' " fuzzy finding for projectionist
 Plug 'djoshea/vim-autoread' " update changed files
 Plug 'elixir-editors/vim-elixir' " elixir gear
+Plug 'nvim-neotest/neotest-jest' " jest test runner
+Plug 'leafgarland/typescript-vim' " typescript syntax
+Plug 'maxmellon/vim-jsx-pretty' " jsx/tsx syntax highlighting
 Plug 'github/copilot.vim' " co-pilot
 Plug 'hashivim/vim-terraform' " tf formatting
 Plug 'jfpedroza/neotest-elixir' " elixir test runner
@@ -27,6 +30,7 @@ Plug 'nvim-neotest/neotest' " test runner
 Plug 'nvim-neotest/nvim-nio' " test runner
 Plug 'nvim-treesitter/nvim-treesitter' " syntax highlighting
 Plug 'ojroques/vim-oscyank', {'commit': '14685fcc4f487ca42dfe786dd54e4b2913370085'} " SSH copy-paste
+Plug 'pangloss/vim-javascript' " javascript syntax/indentation
 Plug 'rodjek/vim-puppet' " puppet syntax highlighting
 Plug 'scrooloose/nerdcommenter' " comment niceties
 Plug 'scrooloose/nerdtree' " file explorer
@@ -38,6 +42,7 @@ Plug 'tpope/vim-projectionist' " related files niceties
 Plug 'tpope/vim-rails' " rails niceties
 Plug 'tpope/vim-repeat' " add plugin support for .
 Plug 'tpope/vim-rhubarb' " github niceties
+Plug 'styled-components/vim-styled-components', { 'branch': 'main' } " styled-components syntax
 Plug 'tpope/vim-surround' " change surrounding quotes, etc.
 Plug 'tpope/vim-unimpaired' " navigation niceties
 Plug 'vim-airline/vim-airline' " status bar

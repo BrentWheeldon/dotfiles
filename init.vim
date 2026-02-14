@@ -234,6 +234,14 @@ nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list
 nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 
+" Code actions
+nmap <leader>ac <Plug>(coc-codeaction-cursor)
+nmap <leader>as <Plug>(coc-codeaction-source)
+nmap <leader>qf <Plug>(coc-fix-current)
+
+" Organize imports
+nmap <leader>oi :call CocActionAsync('runCommand', 'editor.action.organizeImport')<CR>
+
 let g:projectionist_heuristics = {
       \  "lib/**/*.ex": {
       \    "alternate": "test/{}_test.exs",
@@ -253,21 +261,63 @@ let g:projectionist_heuristics = {
       \     "  alias {camelcase|capitalize|dot}",
       \     "end"
       \   ]
+      \  },
+      \  "src/components/*.tsx": {
+      \    "alternate": "src/components/{}.test.tsx",
+      \    "type": "component"
+      \  },
+      \  "src/components/*.test.tsx": {
+      \    "alternate": "src/components/{}.tsx",
+      \    "type": "test"
+      \  },
+      \  "src/**/*.ts": {
+      \    "alternate": "src/{}.test.ts",
+      \    "type": "source"
+      \  },
+      \  "src/**/*.test.ts": {
+      \    "alternate": "src/{}.ts",
+      \    "type": "test"
+      \  },
+      \  "src/**/*.tsx": {
+      \    "alternate": "src/{}.test.tsx",
+      \    "type": "source"
+      \  },
+      \  "src/**/*.test.tsx": {
+      \    "alternate": "src/{}.tsx",
+      \    "type": "test"
       \  }
       \}
 
 autocmd FileType cobol setlocal iskeyword+=-
 
 lua << EOF
+local adapters = {}
+
+-- Elixir adapter
+local ok_elixir, neotest_elixir = pcall(require, "neotest-elixir")
+if ok_elixir then
+  table.insert(adapters, neotest_elixir{
+    post_process_command = function(cmd)
+      return vim.tbl_flatten({{"direnv", "exec", "."}, cmd})
+    end,
+  })
+end
+
+-- Jest adapter
+local ok_jest, neotest_jest = pcall(require, "neotest-jest")
+if ok_jest then
+  table.insert(adapters, neotest_jest({
+    jestCommand = "npm test --",
+    jestConfigFile = "jest.config.js",
+    env = { CI = true },
+    cwd = function()
+      return vim.fn.getcwd()
+    end,
+  }))
+end
+
 require("neotest").setup{
-  adapters = {
-    require("neotest-elixir"){
-      -- Wrap the elixir command in direnv exec . to load the nix environment
-      post_process_command = function(cmd)
-        return vim.tbl_flatten({{"direnv", "exec", "."}, cmd})
-      end,
-    }
-  }
+  adapters = adapters
 }
 EOF
 

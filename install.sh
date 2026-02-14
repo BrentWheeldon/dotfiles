@@ -33,7 +33,6 @@ if [ -n "${MAC}" ]; then
   LAZYGIT_CONFIG_DIR=$HOME/Library/Application\ Support/lazygit/
 
   brew bundle
-  brew link --overwrite node@16
 
   curl https://raw.githubusercontent.com/rcaloras/bash-preexec/master/bash-preexec.sh -o ~/.bash-preexec.sh
   kubectl completion bash >$(brew --prefix)/etc/bash_completion.d/kubectl
@@ -96,8 +95,8 @@ mkdir -p "$LAZYGIT_CONFIG_DIR"
 ln -sf {$BASE_DIRECTORY/lazygit_,"$LAZYGIT_CONFIG_DIR"}config.yml
 
 nvim -u $HOME/.config/nvim/plugins.vim --headless -c "PlugInstall | qa"
-nvim -u $HOME/.config/nvim/plugins.vim --headless -c "TSInstall! elixir | qa"
-nvim -u $HOME/.config/nvim/plugins.vim --headless -c "CocInstall coc-solargraph | qa"
+nvim -u $HOME/.config/nvim/plugins.vim --headless -c "TSInstall! elixir javascript typescript tsx | qa"
+nvim -u $HOME/.config/nvim/plugins.vim --headless -c "CocInstall -sync coc-solargraph coc-tsserver coc-eslint coc-prettier coc-json coc-css | qa"
 
 touch $HOME/.gitconfig.local
 touch $HOME/.bash_profile.local
