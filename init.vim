@@ -26,6 +26,13 @@ noremap <C-t>       :tabe<CR>
 nnoremap <leader>w :Rg "\b<cword>\b"<cr>
 noremap <MiddleMouse>  <Nop>
 
+function! FixQuotes()
+  keepjumps keeppatterns %s/[“”]/"/ge
+  keepjumps keeppatterns %s/[‘’]/'/ge
+endfunction
+
+nnoremap <leader>q <cmd>call FixQuotes()<CR>
+
 map <leader>/   <plug>NERDCommenterToggle
 
 cnoremap <C-A> <Home>
