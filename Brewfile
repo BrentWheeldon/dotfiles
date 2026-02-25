@@ -1,5 +1,3 @@
-tap "homebrew/cask-fonts"
-
 brew "asdf"
 brew "atuin"
 brew "bash"
@@ -16,7 +14,7 @@ brew "ripgrep"
 brew "tmux"
 brew "watchman"
 
-cask "docker"
+cask "docker-desktop"
 cask "dropbox"
 cask "font-meslo-lg-nerd-font"
 cask "gpg-suite-no-mail"
