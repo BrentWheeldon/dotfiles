@@ -103,6 +103,7 @@ touch $HOME/.bash_profile.local
 touch $HOME/.bashrc.local
 
 mkdir -p $HOME/.ssh/sockets/
+mkdir -p $HOME/workspace/
 
 if [ -n "${MAC}" ]; then
   grep -q "$HOMEBREW_PREFIX/bin/bash" /etc/shells || sudo sh -c "echo \"$HOMEBREW_PREFIX/bin/bash\" >> /etc/shells"
