@@ -46,7 +46,7 @@
   defaultBranch = main
 [commit]
   verbose = true
-  gpgsign = false
+  gpgsign = true
 [color "diff-highlight"]
   oldNormal = red bold
   oldHighlight = red bold 52
