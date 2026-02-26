@@ -36,6 +36,9 @@ if [ -n "${MAC}" ]; then
 
   curl https://raw.githubusercontent.com/rcaloras/bash-preexec/master/bash-preexec.sh -o ~/.bash-preexec.sh
   kubectl completion bash >$(brew --prefix)/etc/bash_completion.d/kubectl
+
+  asdf plugin add nodejs https://github.com/asdf-vm/asdf-nodejs.git
+  asdf install nodejs
 elif [ -n "${LINUX}" ]; then
   DIFF_HIGHLIGHT_PATH=/usr/share/doc/git/contrib/diff-highlight/
   BIN_PATH=/usr/bin/

@@ -58,7 +58,7 @@ export HISTFILESIZE=50000
 export HISTSIZE=50000
 export HISTTIMEFORMAT="%h %d %H:%M:%S "
 export LSCOLORS=ExFxCxDxBxegedabagacad
-export PATH="$(brew --prefix)/bin:$PATH:$HOME/node_modules/.bin:$HOME/bin"
+export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$(brew --prefix)/bin:$PATH:$HOME/node_modules/.bin:$HOME/bin"
 export PS1="\[\e[00;32m\]\h\[\e[0m\]\[\e[00;37m\]:\[\e[0m\]\[\e[01;36m\]\W\[\e[0m\]\[\e[00;37m\] \[\e[0m\]\[\e[00;33m\]\$(parse_git_branch)\[\e[0m\]\[\e[00;37m\]\$ \[\e[0m\]"
 
 alias gitprune="git remote prune origin && git prune"
@@ -75,6 +75,8 @@ alias wipit="git add . && git commit --no-verify -m wip"
 [[ -f ~/.bash-preexec.sh ]] && source ~/.bash-preexec.sh
 
 eval "$(atuin init bash)"
+
+. <(asdf completion bash)
 
 ulimit -n unlimited
 
