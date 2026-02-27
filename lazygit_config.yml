@@ -2,3 +2,5 @@
 disableStartupPopups: true
 gui:
   showFileTree: false
+git:
+  overrideGpg: true
