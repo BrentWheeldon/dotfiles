@@ -1,37 +1,42 @@
 {
-  "coc.preferences.formatOnSave": true,
-  "coc.preferences.formatOnSaveFiletypes": [
+  "coc.preferences.formatOnSave": [
     "javascript",
     "javascriptreact",
     "typescript",
     "typescriptreact",
     "json",
     "css",
-    "scss"
+    "scss",
+    "ruby"
   ],
-
   "typescript.preferences.importModuleSpecifier": "relative",
   "typescript.suggest.autoImports": true,
   "typescript.updateImportsOnFileMove.enabled": "always",
   "typescript.inlayHints.parameterNames.enabled": "all",
   "typescript.inlayHints.functionLikeReturnTypes.enabled": true,
-
   "javascript.preferences.importModuleSpecifier": "relative",
   "javascript.suggest.autoImports": true,
   "javascript.updateImportsOnFileMove.enabled": "always",
-
   "eslint.autoFixOnSave": true,
-  "eslint.filetypes": [
+  "eslint.probe": [
     "javascript",
     "javascriptreact",
     "typescript",
     "typescriptreact"
   ],
-
   "prettier.singleQuote": true,
   "prettier.trailingComma": "es5",
   "prettier.semi": true,
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true
+  },
+  "languageserver": {
+    "standardrb": {
+      "command": "bin/standardrb",
+      "args": ["--lsp"],
+      "filetypes": ["ruby"],
+      "rootPatterns": [".standard.yml", "Gemfile", "Gemfile.lock"],
+      "requireRootPattern": true
+    }
   }
 }

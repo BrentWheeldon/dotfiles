@@ -2,6 +2,8 @@ set nocompatible
 
 source ~/.config/nvim/plugins.vim
 
+autocmd BufRead,BufNewFile *.arb set filetype=ruby
+
 autocmd TextYankPost * if v:event.operator is 'y' && v:event.regname is '+' | execute 'OSCYankReg "' | endif
 
 let mapleader = ','
@@ -137,7 +139,6 @@ augroup spelling
   autocmd BufRead,BufNewFile *.md setlocal spell
   autocmd FileType gitcommit setlocal spell
 augroup END
-set complete+=kspell
 
 augroup markdown
   autocmd!
@@ -180,6 +181,8 @@ nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
+nmap <silent> sgd :call CocAction('jumpDefinition', 'split')<CR>
+nmap <silent> vgd :call CocAction('jumpDefinition', 'vsplit')<CR>
 
 " Use K to show documentation in preview window
 nnoremap <silent> K :call ShowDocumentation()<CR>
@@ -240,6 +243,10 @@ nnoremap <silent><nowait> <space>j  :<C-u>CocNext<CR>
 nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list
 nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
+
+" See available actions
+nnoremap <leader><space> :call CocAction('codeAction', 'cursor')<CR>
+nnoremap <silent><nowait> <space>r <Plug>(coc-rename)
 
 " Code actions
 nmap <leader>ac <Plug>(coc-codeaction-cursor)
