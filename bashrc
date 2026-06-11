@@ -39,6 +39,70 @@ newtmux() {
   tmux attach-session -d -t "$session_name"
 }
 
+worktmux() {
+  local name="$1"
+  if [[ -z "$name" ]]; then
+    echo "Usage: worktmux <worktree-name>" >&2
+    return 1
+  fi
+
+  # Reconnect if session already exists
+  tmux attach-session -t "$name" 2>/dev/null && return 0
+
+  local git_root worktree_path
+  git_root=$(git rev-parse --show-toplevel 2>/dev/null || pwd)
+  worktree_path="$git_root/.claude/worktrees/$name"
+
+  # Start session with claude running from git root (worktree doesn't exist yet)
+  tmux new-session -d -s "$name" -n "claude" -c "$git_root" "claude -w $1"
+
+  # Once claude's hook creates the worktree directory, add the remaining windows
+  (
+    local waited=0
+    while [[ ! -d "$worktree_path" && $waited -lt 300 ]]; do
+      sleep 2
+      waited=$((waited + 2))
+    done
+    [[ ! -d "$worktree_path" ]] && exit 0
+
+    tmux split-window -h -t "$name:claude" -c "$worktree_path"
+    tmux select-pane -t "$name:claude.0"
+    tmux new-window -d -t "$name" -n "nvim" -c "$worktree_path" "nvim; $SHELL"
+    tmux new-window -d -t "$name" -n "lazygit" -c "$worktree_path" "lazygit; $SHELL"
+    tmux new-window -d -t "$name" -n "dev" -c "$worktree_path" "make dev; $SHELL"
+    tmux select-window -t "$name:claude"
+  ) & disown
+
+  tmux attach-session -d -t "$name"
+}
+
+rmworktree() {
+  local name="$1"
+  if [[ -z "$name" ]]; then
+    local git_root
+    git_root=$(git rev-parse --show-toplevel 2>/dev/null || pwd)
+    name=$(ls "$git_root/.claude/worktrees/" 2>/dev/null | fzf --prompt="Remove worktree: ")
+    [[ -z "$name" ]] && return 0
+  fi
+
+  local git_root worktree_path branch
+  git_root=$(git rev-parse --show-toplevel 2>/dev/null || pwd)
+  worktree_path="$git_root/.claude/worktrees/$name"
+  branch="$(whoami)/$name"
+
+  tmux kill-session -t "$name" 2>/dev/null && echo "Killed tmux session: $name"
+
+  if git -C "$git_root" worktree list | grep -q "$worktree_path"; then
+    git -C "$git_root" worktree remove "$worktree_path" --force
+    echo "Removed worktree: $worktree_path"
+  fi
+
+  if git -C "$git_root" show-ref --verify --quiet "refs/heads/$branch"; then
+    git -C "$git_root" branch -D "$branch"
+    echo "Deleted branch: $branch"
+  fi
+}
+
 fix-git-head() {
   git remote set-head origin --auto
 }
