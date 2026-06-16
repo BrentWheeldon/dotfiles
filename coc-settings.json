@@ -31,6 +31,12 @@
     "source.fixAll.eslint": true
   },
   "languageserver": {
+    "ruby-lsp": {
+      "command": "ruby-lsp",
+      "filetypes": ["ruby"],
+      "rootPatterns": ["Gemfile", "Gemfile.lock"],
+      "requireRootPattern": true
+    },
     "standardrb": {
       "command": "bin/standardrb",
       "args": ["--lsp"],

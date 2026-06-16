@@ -99,7 +99,7 @@ ln -sf {$BASE_DIRECTORY/lazygit_,"$LAZYGIT_CONFIG_DIR"}config.yml
 
 nvim -u $HOME/.config/nvim/plugins.vim --headless -c "PlugInstall | qa"
 nvim -u $HOME/.config/nvim/plugins.vim --headless -c "TSInstall! elixir javascript typescript tsx | qa"
-nvim -u $HOME/.config/nvim/plugins.vim --headless -c "CocInstall -sync coc-solargraph coc-tsserver coc-eslint coc-prettier coc-json coc-css | qa"
+nvim -u $HOME/.config/nvim/plugins.vim --headless -c "CocInstall -sync coc-tsserver coc-eslint coc-prettier coc-json coc-css | qa"
 
 touch $HOME/.gitconfig.local
 touch $HOME/.bash_profile.local
