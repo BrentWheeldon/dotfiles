@@ -103,6 +103,16 @@ rmworktree() {
   fi
 }
 
+launchweb() {
+  if [ -f ".worktree.env" ]; then
+    . ./.worktree.env
+  fi
+
+  PORT="${PORT:-3000}"
+
+  open "http://localhost:${PORT}"
+}
+
 fix-git-head() {
   git remote set-head origin --auto
 }
