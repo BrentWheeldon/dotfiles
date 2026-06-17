@@ -34,15 +34,10 @@
     "ruby-lsp": {
       "command": "ruby-lsp",
       "filetypes": ["ruby"],
-      "rootPatterns": ["Gemfile", "Gemfile.lock"],
-      "requireRootPattern": true
-    },
-    "standardrb": {
-      "command": "bin/standardrb",
-      "args": ["--lsp"],
-      "filetypes": ["ruby"],
-      "rootPatterns": [".standard.yml", "Gemfile", "Gemfile.lock"],
-      "requireRootPattern": true
+      "initializationOptions": {
+        "formatter": "standard",
+        "linters": ["standard"]
+      }
     }
   }
 }
