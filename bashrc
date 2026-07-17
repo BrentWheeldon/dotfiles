@@ -103,6 +103,16 @@ rmworktree() {
   fi
 }
 
+_rmworktree_complete() {
+  local git_root worktrees_dir
+  git_root=$(git rev-parse --show-toplevel 2>/dev/null || pwd)
+  worktrees_dir="$git_root/.claude/worktrees"
+  if [[ -d "$worktrees_dir" ]]; then
+    COMPREPLY=($(compgen -W "$(ls "$worktrees_dir" 2>/dev/null)" -- "${COMP_WORDS[COMP_CWORD]}"))
+  fi
+}
+complete -F _rmworktree_complete rmworktree
+
 launchweb() {
   if [ -f ".worktree.env" ]; then
     . ./.worktree.env
