@@ -53,25 +53,36 @@ worktmux() {
   git_root=$(git rev-parse --show-toplevel 2>/dev/null || pwd)
   worktree_path="$git_root/.claude/worktrees/$name"
 
-  # Start session with claude running from git root (worktree doesn't exist yet)
-  tmux new-session -d -s "$name" -n "claude" -c "$git_root" "claude -w $1"
-
-  # Once claude's hook creates the worktree directory, add the remaining windows
-  (
-    local waited=0
-    while [[ ! -d "$worktree_path" && $waited -lt 300 ]]; do
-      sleep 2
-      waited=$((waited + 2))
-    done
-    [[ ! -d "$worktree_path" ]] && exit 0
-
+  if [[ -d "$worktree_path" ]]; then
+    # Worktree already exists (e.g. after reboot) — set up session immediately
+    tmux new-session -d -s "$name" -n "claude" -c "$worktree_path" "claude; $SHELL"
     tmux split-window -h -t "$name:claude" -c "$worktree_path"
     tmux select-pane -t "$name:claude.0"
     tmux new-window -d -t "$name" -n "nvim" -c "$worktree_path" "nvim; $SHELL"
     tmux new-window -d -t "$name" -n "lazygit" -c "$worktree_path" "lazygit; $SHELL"
     tmux new-window -d -t "$name" -n "dev" -c "$worktree_path" "make dev; $SHELL"
     tmux select-window -t "$name:claude"
-  ) & disown
+  else
+    # Start session with claude running from git root (worktree doesn't exist yet)
+    tmux new-session -d -s "$name" -n "claude" -c "$git_root" "claude -w $1"
+
+    # Once claude's hook creates the worktree directory, add the remaining windows
+    (
+      local waited=0
+      while [[ ! -f "$worktree_path/tmp/.worktree-provisioned" && $waited -lt 300 ]]; do
+        sleep 2
+        waited=$((waited + 2))
+      done
+      [[ ! -d "$worktree_path" ]] && exit 0
+
+      tmux split-window -h -t "$name:claude" -c "$worktree_path"
+      tmux select-pane -t "$name:claude.0"
+      tmux new-window -d -t "$name" -n "nvim" -c "$worktree_path" "nvim; $SHELL"
+      tmux new-window -d -t "$name" -n "lazygit" -c "$worktree_path" "lazygit; $SHELL"
+      tmux new-window -d -t "$name" -n "dev" -c "$worktree_path" "make dev; $SHELL"
+      tmux select-window -t "$name:claude"
+    ) & disown
+  fi
 
   tmux attach-session -d -t "$name"
 }
@@ -114,8 +125,8 @@ _rmworktree_complete() {
 complete -F _rmworktree_complete rmworktree
 
 launchweb() {
-  if [ -f ".worktree.env" ]; then
-    . ./.worktree.env
+  if [ -f ".env.development.local" ]; then
+    . ./.env.development.local
   fi
 
   PORT="${PORT:-3000}"
