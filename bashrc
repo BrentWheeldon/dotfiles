@@ -16,6 +16,8 @@ elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
   export LINUX=1
 fi
 
+DOTFILES_DIR="$(dirname "$(readlink -f "${BASH_SOURCE[0]}")")"
+
 parse_git_branch() {
   branch=$(git rev-parse --abbrev-ref HEAD 2> /dev/null)
   [ -n "$branch" ] && echo "($branch) "
@@ -43,9 +45,10 @@ newtmux() {
 worktmux() {
   local name="$1"
   if [[ -z "$name" ]]; then
-    echo "Usage: worktmux <worktree-name>" >&2
+    echo "Usage: worktmux <worktree-name> [options...]" >&2
     return 1
   fi
+  shift
 
   # Reconnect if session already exists
   tmux attach-session -t "$name" 2>/dev/null && return 0
@@ -54,36 +57,19 @@ worktmux() {
   git_root=$(git rev-parse --show-toplevel 2>/dev/null || pwd)
   worktree_path="$git_root/.claude/worktrees/$name"
 
-  if [[ -d "$worktree_path" ]]; then
-    # Worktree already exists (e.g. after reboot) — set up session immediately
-    tmux new-session -d -s "$name" -n "claude" -c "$worktree_path" "claude; $SHELL"
-    tmux split-window -h -t "$name:claude" -c "$worktree_path"
-    tmux select-pane -t "$name:claude.0"
-    tmux new-window -d -t "$name" -n "nvim" -c "$worktree_path" "nvim; $SHELL"
-    tmux new-window -d -t "$name" -n "lazygit" -c "$worktree_path" "lazygit; $SHELL"
-    tmux new-window -d -t "$name" -n "dev" -c "$worktree_path" "make dev; $SHELL"
-    tmux select-window -t "$name:claude"
-  else
-    # Start session with claude running from git root (worktree doesn't exist yet)
-    tmux new-session -d -s "$name" -n "claude" -c "$git_root" "claude -w $1"
-
-    # Once claude's hook creates the worktree directory, add the remaining windows
-    (
-      local waited=0
-      while [[ ! -f "$worktree_path/tmp/.worktree-provisioned" && $waited -lt 300 ]]; do
-        sleep 2
-        waited=$((waited + 2))
-      done
-      [[ ! -d "$worktree_path" ]] && exit 0
-
-      tmux split-window -h -t "$name:claude" -c "$worktree_path"
-      tmux select-pane -t "$name:claude.0"
-      tmux new-window -d -t "$name" -n "nvim" -c "$worktree_path" "nvim; $SHELL"
-      tmux new-window -d -t "$name" -n "lazygit" -c "$worktree_path" "lazygit; $SHELL"
-      tmux new-window -d -t "$name" -n "dev" -c "$worktree_path" "make dev; $SHELL"
-      tmux select-window -t "$name:claude"
-    ) & disown
+  if [[ ! -d "$worktree_path" ]]; then
+    # Remaining args (e.g. --skip-db) are forwarded to the repo's
+    # ./.local/worktree-setup.sh
+    "$DOTFILES_DIR/bin/worktree-create.sh" "$name" "$git_root" "$@" || return 1
   fi
+
+  tmux new-session -d -s "$name" -n "claude" -c "$worktree_path" "claude; $SHELL"
+  tmux split-window -h -t "$name:claude" -c "$worktree_path"
+  tmux select-pane -t "$name:claude.0"
+  tmux new-window -d -t "$name" -n "nvim" -c "$worktree_path" "nvim; $SHELL"
+  tmux new-window -d -t "$name" -n "lazygit" -c "$worktree_path" "lazygit; $SHELL"
+  tmux new-window -d -t "$name" -n "dev" -c "$worktree_path" "make dev; $SHELL"
+  tmux select-window -t "$name:claude"
 
   tmux attach-session -d -t "$name"
 }
@@ -97,22 +83,12 @@ rmworktree() {
     [[ -z "$name" ]] && return 0
   fi
 
-  local git_root worktree_path branch
+  local git_root
   git_root=$(git rev-parse --show-toplevel 2>/dev/null || pwd)
-  worktree_path="$git_root/.claude/worktrees/$name"
-  branch="$(whoami)/$name"
 
   tmux kill-session -t "$name" 2>/dev/null && echo "Killed tmux session: $name"
 
-  if git -C "$git_root" worktree list | grep -q "$worktree_path"; then
-    git -C "$git_root" worktree remove "$worktree_path" --force
-    echo "Removed worktree: $worktree_path"
-  fi
-
-  if git -C "$git_root" show-ref --verify --quiet "refs/heads/$branch"; then
-    git -C "$git_root" branch -D "$branch"
-    echo "Deleted branch: $branch"
-  fi
+  "$DOTFILES_DIR/bin/worktree-remove.sh" "$name" "$git_root"
 }
 
 _rmworktree_complete() {

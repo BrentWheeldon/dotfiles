@@ -1,1 +1,5 @@
 .vim/
+
+**/.claude/settings.local.json
+**/.local/worktree-setup.sh
+**/.local/worktree-teardown.sh
