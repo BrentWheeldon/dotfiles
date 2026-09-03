@@ -17,7 +17,7 @@ elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
 fi
 
 parse_git_branch() {
- git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1) /'
+  git rev-parse --abbrev-ref HEAD 2>/dev/null
 }
 export -f parse_git_branch
 

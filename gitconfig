@@ -29,7 +29,7 @@
   editor = nvim
   excludesfile = ~/.gitignore_global
 [color]
-  ui = true
+  ui = always
 [diff]
   algorithm = histogram
   colorMoved = plain
