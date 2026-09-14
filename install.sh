@@ -86,6 +86,8 @@ ln -sf {$BASE_DIRECTORY/,$HOME/.}gitignore_global
 ln -sf {$BASE_DIRECTORY/,$HOME/.}inputrc
 mkdir -p $HOME/.config/nvim
 mkdir -p $HOME/.vim-tmp/backup
+mkdir -p $HOME/.claude
+ln -sf {$BASE_DIRECTORY/claude_,$HOME/.claude/}CLAUDE.md
 ln -sf {$BASE_DIRECTORY/,$HOME/.config/nvim/}init.vim
 ln -sf {$BASE_DIRECTORY/,$HOME/.config/nvim/}plugins.vim
 ln -sf {$BASE_DIRECTORY/,$HOME/.config/nvim/}coc-settings.json
