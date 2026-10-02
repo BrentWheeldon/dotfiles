@@ -47,7 +47,6 @@ Plug 'tpope/vim-surround' " change surrounding quotes, etc.
 Plug 'tpope/vim-unimpaired' " navigation niceties
 Plug 'vim-airline/vim-airline' " status bar
 Plug 'vim-ruby/vim-ruby' " ruby niceties
-Plug 'vim-scripts/gitignore' " ignore things in gitignore
 Plug 'vim-scripts/nextval' " increment niceties
 Plug 'vim-scripts/regreplop.vim' " paste niceties
 
